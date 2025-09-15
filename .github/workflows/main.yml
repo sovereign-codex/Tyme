@@ -1,0 +1,38 @@
+name: Crown of Tyme Lattice
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  meltdown-reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Validate manifests
+        run: |
+          python scripts/validate_manifest.py manifest/*.json
+
+      - name: Rebuild lattice
+        run: |
+          python scripts/reconstruct.py
+
+      - name: Generate Codex Docs
+        run: |
+          python scripts/generate_docs.py > docs/index.md
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs

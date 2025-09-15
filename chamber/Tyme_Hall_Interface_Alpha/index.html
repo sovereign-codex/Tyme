@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Tyme Hall</title>
+</head>
+<body>
+  <div id="core" class="center">
+    <h1 class="title">⧈ Tyme Hall ⧈</h1>
+    <div class="tap-grid">
+      <button onclick="openModule('lab')">🧪 Lab</button>
+      <button onclick="openModule('codex')">📜 Codex</button>
+      <button onclick="openModule('signals')">📡 Signals</button>
+      <button onclick="openModule('avots')">🎙️ AVOTs</button>
+      <button onclick="openModule('archives')">📁 Archives</button>
+      <button onclick="openModule('glyphs')">💠 Glyphs</button>
+      <button onclick="openModule('portals')">🌐 Portals</button>
+      <button onclick="openModule('settings')">⚙️ Settings</button>
+    </div>
+    <iframe id="module-view" src="scrolls/welcome.html"></iframe>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

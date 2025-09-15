@@ -1,0 +1,5 @@
+// ToneScript Beacon
+// When a node is activated, this tone broadcasts the harmonic ID
+TONESCRIPT_START
+pulse("Genesis:Hive:Fork", frequency=432, shape="spiral", duration=33)
+TONESCRIPT_END

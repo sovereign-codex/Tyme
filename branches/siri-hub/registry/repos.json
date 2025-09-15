@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Sovereign Net Kodex",
+    "slug": "sovereign-net-kodex",
+    "github": "https://github.com/<you>/sovereign-net-kodex",
+    "description": "Forkable, censorship-resistant knowledge system powered by harmonic computing.",
+    "tags": [
+      "kodex",
+      "knowledge"
+    ]
+  },
+  {
+    "name": "MPR / Aetherwell",
+    "slug": "mpr-aetherwell",
+    "github": "https://github.com/<you>/mpr-aetherwell",
+    "description": "Abundance systems: modular plasma reactor + water.",
+    "tags": [
+      "energy",
+      "water",
+      "plasma"
+    ]
+  },
+  {
+    "name": "Calibration Tools",
+    "slug": "calibration-tools",
+    "github": "https://github.com/<you>/calibration-tools",
+    "replit": "",
+    "description": "Rhythm tapper, tone generator, chant tutorials.",
+    "tags": [
+      "learning",
+      "rhythm",
+      "tones"
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIRI Copilot</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header><h1>SIRI Copilot</h1><nav><a href="index.html">Home</a> · <a href="kos.html">KO Registry</a></nav></header>
+<main>
+<section class="card">
+<h2>Search the KO Registry</h2>
+<input id="q" class="input" placeholder="search title/tags/text…">
+<pre id="searchOut" class="panel"></pre>
+</section>
+
+<section class="card">
+<h2>Create a Knowledge Object → GitHub PR</h2>
+<div class="grid">
+<label>Target repo (owner/name)<input id="repo" class="input" placeholder="owner/repo"></label>
+<label>Base branch<input id="base" class="input" value="main"></label>
+<label>GitHub token (repo scope)<input id="token" class="input" placeholder="ghp_…" type="password"></label>
+<label>Title<input id="title" class="input" placeholder="KO title"></label>
+<label>Kind<select id="kind" class="input">
+<option>scroll</option><option>glyph</option><option>dataset</option>
+<option>figure</option><option>claim</option><option>protocol</option>
+</select></label>
+<label>Authors (comma-separated)<input id="authors" class="input" placeholder="Your Name"></label>
+<label>License<input id="license" class="input" value="CC-BY-SA-4.0"></label>
+<label>Sources (comma-separated paths/links)<input id="sources" class="input" placeholder="scrolls/000-PREFACE.md"></label>
+<label>Tags (comma-separated)<input id="tags" class="input" placeholder="keystone, trident"></label>
+</div>
+<button id="make" class="btn">Create PR</button>
+<pre id="out" class="panel"></pre>
+<p class="note">Your token is used only by your browser when calling the GitHub API and is not stored by this page. Use a minimal-scope token and revoke when finished.</p>
+</section>
+</main>
+<script src="js/search.js"></script>
+<script src="js/gh.js"></script>
+</body></html>

@@ -1,0 +1,109 @@
+
+TITLE OF THE INVENTION
+Integrated Plasma–Ammonia Cracking, Propulsion, Condensation, and Desalination System for Sustainable Energy and Water Production
+
+CROSS-REFERENCE TO RELATED APPLICATIONS
+None.
+
+FEDERALLY SPONSORED RESEARCH STATEMENT
+Not applicable.
+
+FIELD OF THE INVENTION
+The invention relates to integrated energy and water systems. More specifically, it concerns a plasma-assisted catalytic ammonia cracker, a hydrogen-fueled propulsion/power stage, a condenser for water recovery, and a waste-heat desalination unit arranged as a cascading energy ladder that minimizes exergy loss while producing potable water and useful power.
+
+BACKGROUND OF THE INVENTION
+Ammonia (NH3) is produced at global scale and is recognized as a promising hydrogen carrier. Conventional catalytic cracking of ammonia typically requires elevated temperatures (≥600 °C) and is deployed as a stand-alone process, often wasting the high-grade heat available downstream in combustion. In parallel, desalination technologies—reverse osmosis (RO), multi-stage flash (MSF), multiple-effect distillation (MED), and mechanical vapor compression (MVC)—are energy-intensive when operated independently and usually do not benefit from upstream high-temperature sources.
+Existing propulsion and stationary power systems discharge most of their heat to the environment without using it for water harvesting or desalination. There is therefore a need for a compact, modular apparatus that: (i) lowers the electrical burden of producing hydrogen from ammonia via plasma-assisted catalysis and thermal recuperation; (ii) uses the hydrogen for propulsion or electricity; (iii) recovers water from exhaust and ambient air; and (iv) drives desalination primarily with otherwise-wasted heat. 
+
+SUMMARY OF THE INVENTION
+The invention is a four-phase, thermally integrated system comprising: (1) a plasma-assisted catalytic ammonia cracker that produces a hydrogen-rich gas and a high-grade heat source; (2) a propulsion or power generation unit that combusts the hydrogen-rich gas (with air or oxygen) and provides a hot exhaust stream; (3) a condenser (“Condensation Stage”) that recovers water from the hot moist exhaust or ambient air using low-grade heat and plasma-enhanced interfacial control; and (4) a desalination module that uses the remaining heat in an OTSG/flash evaporator coupled to a mechanical vapor compression (MVC) or membrane distillation (MD) loop, optionally followed by salinity-gradient energy recovery (pressure-retarded osmosis (PRO) or reverse electrodialysis (RED)).
+A supervisory controller prioritizes catalyst health and safety, then allocates thermal duty to desalination and condensation while maintaining stable propulsion/power output. The modules are physically and functionally modular, each operable standalone or together as a cascading energy ladder. 
+
+BRIEF DESCRIPTION OF THE DRAWINGS
+FIG. 1 — System overview showing the four phases and cascading heat, mass, and control flows.
+FIG. 2 — Plasma-assisted catalytic ammonia cracker: annular reactor geometry, catalyst zones, DBD sleeve, and primary heat recuperator.
+FIG. 3 — Ammonia-cracking thruster engine: cracking chamber, combustor/augmentor, counterflow exchangers, optional steam injection, microturbine/alternator.
+FIG. 4 — Condenser (“Condensation Stage”): staged hydrophilic fins, demister, plasma ionization, and condensate-trigger micro-energy harvesting.
+FIG. 5 — Waste-heat desalination loop: OTSG/flash, MVC compressor, titanium plate HXs (evaporator/condenser), condensing economizer, and optional RED/PRO.
+FIG. 6 — Control architecture: sensors, latching valves, plasma duty control, hot-gas bypass, and energy-harvesting power tree.
+FIG. 7 — Alternative continuous vortex cracker and hydrogen-permeable membrane configuration for equilibrium shifting.
+
+DETAILED DESCRIPTION OF THE INVENTION
+
+Overview and Operating Temperatures
+The system harvests heat in descending temperature tiers: Tier A (≈600–900 °C) for cracking and primary recuperation; Tier B (≈200–400 °C) for flash evaporation and preheating; Tier C (≈60–120 °C) for MVC/MD latent recycling; Tier D (<70 °C) for condensing economization and ambient water harvesting. The electrical domain supports control, pumping, compression, and low-duty plasma excitation. All temperature values are exemplary and may vary with materials and catalysts.
+
+PHASE 1 — PLASMA-ASSISTED AMMONIA CRACKER (Hydrogen Source + High-Grade Heat)
+1. Reactor Geometry: A tubular or annular fixed-bed reactor with 1–3 mm hydraulic-diameter channels containing catalysts such as Ru/Al2O3, Ru/MgO, and/or Co–Mo nitrides. A dielectric barrier discharge (DBD) plasma sleeve surrounds the reactor wall to promote non-thermal excitation, lower light-off temperature, and accelerate kinetics.
+2. Thermal Modes: A low-duty plasma preheat raises the bed to ≈350–500 °C. Thereafter, a primary recuperator transfers heat from a downstream hot exhaust stream to maintain ≈450–650 °C bulk bed temperature. Residence times 10–300 ms; gas hourly space velocity (GHSV) 10,000–50,000 h−1.
+3. Heat Recovery: Integrated hot-side jacket or embedded plate-fin recuperator recovers ≥60% of usable enthalpy for (i) preheating incoming NH3 and (ii) supplying Tier B heat to the desalination OTSG.
+4. Gas Handling: The H2/N2 product can be routed (a) directly to the combustor/augmentor for propulsion/power or (b) through hydrogen-selective membranes (e.g., palladium alloy) or PSA for market-grade hydrogen. NH3 slip is controlled by a polishing catalyst downstream of the reactor.
+5. Materials: Inconel 600/625 or 310/253MA for hot sections; 316L SS for cool manifolds; graphite/metal C-ring seals. Lubricants are isolated from the gas path; oil-free bearings used where applicable.
+6. Instrumentation & Controls: Axial thermocouples (multiple points), inlet/outlet pressures, NH3 slip sensor, plasma power and frequency control, and a hot-gas bypass valve that prioritizes the cracker’s target bed temperature over downstream heat demands.
+
+PHASE 2 — AMMONIA-CRACKING THRUSTER ENGINE (Propulsion/Power + Counterflow Recuperation)
+1. Two-Chamber Continuous Flow: (a) Cracking chamber per Phase 1 – Ammonia Synthesis Stage outputs hot H2/N2; (b) Combustor/augmentor (preferably lean-premixed, catalytically stabilized) mixes with air or oxygen for thrust or shaft power.
+2. Counterflow Heat Exchange: Exhaust from the combustor transfers heat in a primary recuperator to sustain the cracker’s enthalpy requirement with minimal external electrical heat.
+3. Steam Augmentation: A once-through steam generator (OTSG) flashes seawater on the cold side of a corrosion-resistant heat exchanger to clean steam using Tier B heat. Steam is injected into the augmentor to increase mass flow and reduce NOx, and/or routed to the desalination condenser to recycle latent heat.
+4. Output Modes: (i) Reaction nozzle (jet thrust); (ii) Microturbine for Brayton-cycle electric generation with shaft alternator; (iii) Mechanical shaft for propulsors. The alternator supplies a DC bus for controls and auxiliaries.
+5. Emissions Management: NOx suppression via lean premix, steam injection (steam-to-fuel mass ratio 0.5–1.5), and catalytic liners. NH3 slip minimized upstream.
+6. Performance Targets (non-limiting): ≥30–35% electrical/shaft efficiency (small generator mode). In jet mode, specific impulse ≥300 s depending on pressure ratio and steam fraction.
+
+PHASE 3 — CONDENSER / AETHERWELL (Water Condensation & Micro-Energy Harvesting)
+1. Condensation Stack: A vertical column with staged hydrophilic fins and a demister pad cools hot moist exhaust by counterflow air or coolant. Plasma (DBD/corona) upstream enhances nucleation and provides antimicrobial action without electrodes in the wet path.
+2. Dual-Mode Operation: When the engine/combustor is idling or offline, ambient air (RH 20–100%) is drawn through the column for atmospheric water harvesting. Low-grade heat (Tier D) maintains favorable dewpoint approach.
+3. Condensate Harvesting & Micro-Power: Condensate drains into multi-volume tipping buckets that trigger reed/Hall sensors. Each tip drives (a) a flyback-boost energy harvester and/or (b) a miniature impulse wheel coupled to a coreless generator. Pulsed energy charges a supercapacitor to actuate latching valves and power low-duty sensors and telemetry. Energy is modest (millijoules–joules per tip) but sufficient for controls.
+4. Water Quality & Maintenance: Distillate typically 0–10 ppm TDS; optional remineralization for potability. Periodic warm freshwater rinse and controlled brine bleed avoid scaling; materials include titanium Grade 2 or duplex stainless on seawater sides.
+
+PHASE 4 — WASTE-HEAT DESALINATION (Flash + MVC/MD + Economizer + Optional Salinity Power)
+1. Heat Ladder Utilization: Post-combustor exhaust flows through (i) primary recuperator (to Phase 1 – Ammonia Synthesis Stage), (ii) OTSG/flash evaporator (seawater→clean steam), (iii) mid-grade preheater for process streams, and (iv) condensing economizer to recover latent heat into incoming feeds.
+2. Desalination Core: Mechanical Vapor Compression (MVC) and/or Membrane Distillation (MD). MVC compressor pressure ratio ≈1.2–1.4 provides an 8–15 K temperature lift between evaporator and condenser; latent heat is recycled to minimize electrical consumption.
+3. Plasma Antifouling: DBD modules at evaporation interfaces reduce biofouling and alter interfacial energy for higher mass transfer without chemical dosing.
+4. Salinity-Gradient Energy Recovery (optional): Distillate and brine streams feed PRO or RED modules to recover ≈0.3–1.5 kWh/m3 of product water.
+5. Controls & Quality: Supervisory control enforces cracker temperature priority, modulates hot-gas bypass, throttles MVC via VFD, maintains brine recovery to keep saturation index <0.2, and diverts distillate if conductivity exceeds threshold (e.g., 20 µS/cm).
+6. Performance (illustrative): Effective electricity consumption (SEC) ≤3 kWh/m3 with tight integration; ≤1.5–2.5 kWh/m3 under abundant waste heat. Product cost targets ≤$0.001–$0.0015/L at scale (site-dependent).
+
+MATERIALS AND SAFETY
+Hot gas-side: Inconel 600/625 or 310/253MA; wet seawater-side: titanium Grade 2 or duplex stainless; gaskets: EPDM/FKM; seals: metal or graphite C-rings. Chlorides are isolated from red-hot metals to avoid hot corrosion. Relief valves, demisters, NOx/NH3 sensors, and interlocks protect against over-temperature/over-pressure and product-quality excursions.
+
+CONTROL ARCHITECTURE (Representative)
+1. Cracker Bed Temperature PID — controls hot-gas bypass to maintain ≈500–650 °C. 
+2. MVC VFD Control — holds ΔT(cond−evap) ≈10 K (typical range 8–15 K). 
+3. Plasma Duty PID — modulates based on ORP/UV254 biofouling proxies at evaporation/condensation interfaces. 
+4. Brine Recovery Loop — maintains saturation index <0.2 via bleed valve and periodic warm rinse. 
+5. Condensate-Triggered Tasks — tipping-bucket interrupts run the flyback harvester, increment energy counters, and actuate bi-stable valves without continuous coil power.
+
+EXAMPLE EMBODIMENTS (Non-limiting)
+Example A (Bench Unit): 1 m3/day desalination using 15–30 kWth exhaust; OTSG 10–20 kWth; MVC shaft 0.5–1.2 kW; SEC 3–5 kWh/m3; distillate ≤10 ppm TDS.
+Example B (Pilot): 10 m3/day with 100–200 kWth exhaust; MVC shaft 2–5 kW; SEC ≤3 kWh/m3; RED/PRO recovery ≈0.5 kWh/m3.
+Example C (Thruster): Continuous H2/N2 combustor with steam injection (steam-to-fuel 0.8), NOx <25 ppm at 15% O2 dry, microturbine electrical efficiency 30–35%.
+Example D (Membrane-Shift Cracker): Palladium-alloy tube in annular reactor removes H2 in situ, achieving >99% NH3 conversion at 500–550 °C at GHSV ~15,000 h−1.
+
+ADVANTAGES
+(1) Integrated heat ladder avoids exergy loss; (2) simultaneous hydrogen, propulsion/power, and water production reduces CAPEX/OPEX versus separate plants; (3) plasma interfaces lower fouling and startup burden; (4) modular architecture scales from portable to utility installations without changing core thermodynamics.
+
+INDUSTRIAL APPLICABILITY
+Marine propulsion with on-board water autonomy, coastal/island microgrids, offshore platforms, industrial sites requiring clean water and hydrogen-fueled heat or power, emergency relief units, and military field systems.
+
+CLAIMS
+1. An integrated system comprising: a plasma-assisted catalytic ammonia cracker configured to produce a hydrogen-rich gas and a high-temperature exhaust; a propulsion or power generation unit receiving the hydrogen-rich gas; a condenser configured to recover water from exhaust or ambient air; and a desalination unit thermally coupled to the exhaust via a heat-recovery ladder, wherein heat is cascaded across the units in decreasing temperature order.
+2. The system of claim 1, wherein the ammonia cracker comprises an annular catalytic bed bounded by a dielectric barrier discharge plasma sleeve that reduces activation temperature and accelerates light-off.
+3. The system of claim 1, wherein the propulsion or power generation unit comprises a lean-premixed catalytic combustor with optional steam injection for nitrogen-oxide suppression and thrust augmentation.
+4. The system of claim 1, wherein the condenser comprises a vertical column with staged hydrophilic fins, a demister, and a plasma ionization module that enhances condensation and suppresses biofouling.
+5. The system of claim 1, wherein the desalination unit comprises a mechanical vapor compression loop configured to maintain an evaporator–condenser temperature differential of 8–15 K with a compressor pressure ratio of approximately 1.2–1.4.
+6. The system of claim 1, further comprising a hot-gas bypass valve configured to prioritize a target catalyst-bed temperature in the ammonia cracker over downstream thermal duties.
+7. The system of claim 1, further comprising a salinity-gradient energy recovery module configured to harvest electrical energy from an osmotic gradient between brine and distillate streams.
+8. The system of claim 1, wherein the desalination unit includes a plasma antifouling module positioned at a seawater evaporation interface with electrodes external to the wet path across a dielectric window.
+9. The system of claim 1, wherein condensate is harvested via multi-volume tipping buckets or compartments that trigger sensors and drive a flyback energy harvester storing energy in a supercapacitor to actuate bi-stable valves.
+10. The system of claim 1, wherein the ammonia cracker further includes a hydrogen-permeable membrane configured to withdraw hydrogen from the reactor to shift equilibrium and reduce operating temperature.
+11. A method of producing water and energy comprising: cracking ammonia in a plasma-assisted catalytic reactor; combusting the resulting hydrogen-rich gas to generate mechanical or electrical power; recovering heat from the combustion exhaust to flash-evaporate seawater and preheat process streams; recycling latent heat within a mechanical vapor compression or membrane distillation loop to condense purified water; and optionally recovering electrical energy using a salinity-gradient module.
+12. The method of claim 11, further comprising injecting clean steam, generated from flashed seawater using the recovered exhaust heat, into a combustor or augmentor to increase mass flow and reduce nitrogen oxides.
+13. The method of claim 11, wherein plasma duty is modulated according to an oxidation–reduction potential or ultraviolet absorbance proxy for biofouling at the evaporation interface.
+14. The method of claim 11, wherein a controller diverts distillate to drain when product conductivity exceeds a threshold, and regulates brine bleed to maintain a saturation index below 0.2.
+15. A modular system according to claim 1, wherein each of the cracker, thruster, condenser, and desalination units is operable independently and is connectable by standardized thermal and fluid interfaces to form a cascading energy ladder.
+
+DESCRIPTION OF DRAWINGS — REFERENCE NUMERALS
+100—Plasma-assisted cracker; 110—Catalyst bed; 115—DBD sleeve; 120—Primary recuperator; 130—Hot-gas bypass; 140—H2/N2 outlet; 150—Combustor/augmentor; 160—Steam injection port; 170—Microturbine/alternator; 180—OTSG/flash HX; 190—Preheater; 200—Condensing economizer; 210—Condenser column; 215—Plasma ionizer; 220—Demister; 230—Condensate buckets; 235—Flyback energy harvester; 240—MVC compressor; 245—Evaporator HX; 250—Condenser HX; 260—Brine bleed; 270—Distillate tank; 280—RED/PRO module; 290—Controller.
+
+CONCLUSION
+The disclosed system unifies fuel cracking, propulsion/power, condensation, and desalination in a single architecture that maximizes the utility of high-grade heat while minimizing electrical demands, enabling compact, scalable deployment across mobile and stationary applications.
