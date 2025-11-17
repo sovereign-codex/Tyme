@@ -1,0 +1,170 @@
+{
+  "version": "0.5.0",
+  "release": {
+    "status": "stable",
+    "tag": "finalization",
+    "notes": "Integration readiness sealed; merge review conflicts resolved; final merge prep for Codex handshake and egress validation"
+  },
+  "handshake": {
+    "phase": "finalization",
+    "ingress_requirements": [
+      "trace_id",
+      "metadata.submitter",
+      "metadata.timestamp",
+      "readiness_hint",
+      "rollback_handle",
+      "provenance.source_manifest"
+    ],
+    "render_dispatch_checkpoints": [
+      "provenance.anchor",
+      "readiness.badge",
+      "checksum.placeholder",
+      "chronicle.badge.fixture"
+    ],
+    "egress_checks": [
+      "checksum.valid",
+      "provenance.present",
+      "anchor.resolves",
+      "chronicle.badge.health"
+    ],
+    "rollback": "global.rollback.safe_stop"
+  },
+  "lanes": [
+    {
+      "name": "ingress",
+      "responsibility": "Accept manifest, scroll, and telemetry payloads; normalize metadata and enforce deduplication + signatures.",
+      "inputs": ["manifest.draft", "scroll.summary", "telemetry.snapshot", "render.egress.health"],
+      "outputs": ["ingest.queue", "deadletter.queue"],
+      "status": "ready",
+      "gates": ["readiness_hint.required", "trace_id.unique", "signature.present"],
+      "health": ["heartbeat.cadence", "ingest.queue_depth", "dedupe.rejection_rate"]
+    },
+    {
+      "name": "validation",
+      "responsibility": "Run schema + business rule validation; enrich with provenance, readiness markers, and checksum placeholder.",
+      "inputs": ["ingest.queue"],
+      "outputs": ["validated.queue", "deadletter.queue"],
+      "status": "ready",
+      "gates": [
+        "schema.aligned",
+        "readiness.within_rubric",
+        "checksum.placeholder_initialized",
+        "rollback_handle.required"
+      ],
+      "health": [
+        "validation.error_rate",
+        "schema_drift.alerts",
+        "checksum.placeholder_coverage",
+        "rollback.population_rate"
+      ]
+    },
+    {
+      "name": "orchestration",
+      "responsibility": "Route validated payloads to AVOT runners and Codex renderers with rollback hooks.",
+      "inputs": ["validated.queue"],
+      "outputs": ["codex.integration", "avot.execute", "deadletter.queue"],
+      "status": "aligned",
+      "gates": ["rollback_handle.present", "readiness.max_soak"],
+      "health": ["dispatch.latency", "codex.queue_depth", "avot.queue_depth"]
+    },
+    {
+      "name": "codex_integration",
+      "responsibility": "Normalize validated payloads into Codex ingestion shape and enforce readiness + rollback policies.",
+      "inputs": ["codex.integration"],
+      "outputs": ["codex.render", "codex.preview", "deadletter.queue"],
+      "status": "sealed",
+      "gates": [
+        "readiness.in_[draft,review,soak]",
+        "rollback_handle.required",
+        "checksum.placeholder_propagated"
+      ],
+      "health": [
+        "renderer.success_ratio",
+        "preview.acceptance_ratio",
+        "ingestion.schema_alignment",
+        "checksum.placeholder_coverage"
+      ]
+    },
+    {
+      "name": "render_dispatch",
+      "responsibility": "Fan out to portal feed and scroll emitters; attach badges and prepare bundles for egress validation.",
+      "inputs": ["codex.render", "codex.preview"],
+      "outputs": ["render.egress", "codex.preview", "deadletter.queue"],
+      "status": "aligned",
+      "gates": ["promotion_rubric.enforced", "preview.acceptance>=0.9", "renderer.success>=0.95"],
+      "health": ["render.latency", "emission.failure_rate", "preview.acceptance_ratio", "bundle.egress_handshake"]
+    },
+    {
+      "name": "egress_validation",
+      "responsibility": "Validate render.egress bundles for anchors, provenance, readiness, and checksum before broadcast.",
+      "inputs": ["render.egress"],
+      "outputs": ["portal.feed", "scroll.output", "chronicle.badge", "deadletter.queue"],
+      "status": "ready",
+      "gates": ["readiness.broadcast_only", "checksum.valid", "provenance.present", "chronicle.badge.health"],
+      "health": ["egress.checksum_failure_rate", "anchor.validation_latency", "broadcast.success_ratio", "badge.health_alignment"]
+    }
+  ],
+  "routes": [
+    {
+      "source": "manifest.draft",
+      "target_lane": "ingress",
+      "policy": "Accept if status in [draft, review]; tag with submitter and timestamp."
+    },
+    {
+      "source": "scroll.summary",
+      "target_lane": "ingress",
+      "policy": "Require linked manifest id; reject if missing readiness gates."
+    },
+    {
+      "source": "telemetry.snapshot",
+      "target_lane": "ingress",
+      "policy": "Capture lane health metrics and forward for Chronicle mirrors."
+    },
+    {
+      "source": "ingest.queue",
+      "target_lane": "validation",
+      "policy": "Run schema validation; drop to deadletter.queue on shape mismatch."
+    },
+    {
+      "source": "validated.queue",
+      "target_lane": "orchestration",
+      "policy": "Dispatch to AVOT or Codex based on payload type; record rollback handle."
+    },
+    {
+      "source": "codex.integration",
+      "target_lane": "codex_integration",
+      "policy": "Only accept readiness in [draft, review, soak]; enforce Codex ingestion contract and attach rollback handle."
+    },
+    {
+      "source": "codex.preview",
+      "target_lane": "render_dispatch",
+      "policy": "Human-reviewed preview; promote to broadcast when acceptance ratio ≥ 0.9."
+    },
+    {
+      "source": "codex.render",
+      "target_lane": "render_dispatch",
+      "policy": "Publish to portal and scroll outputs when renderer success ratio ≥ 95%."
+    },
+    {
+      "source": "render.egress",
+      "target_lane": "egress_validation",
+      "policy": "Broadcast only when readiness = broadcast and checksum/provenance validated with Chronicle badge health; otherwise deadletter and rollback."
+    }
+  ],
+  "sovereign_controls": {
+    "rollback_switch": "global.rollback.safe_stop",
+    "health_signals": [
+      "heartbeat.cadence",
+      "ingest.queue_depth",
+      "validation.error_rate",
+      "renderer.success_ratio",
+      "preview.acceptance_ratio",
+      "render.latency",
+      "egress.checksum_failure_rate",
+      "badge.health_alignment"
+    ],
+    "promotion_rubric": ["draft", "review", "soak", "broadcast"],
+    "integration_gate": "codex.integration.sealed",
+    "handshake_status": "integration-readiness"
+  }
+}

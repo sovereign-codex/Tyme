@@ -1,0 +1,68 @@
+{
+  "name": "Tyme-Core-Dev",
+  "description": "Developer node for orchestrating Tyme Core runtime, manifests, and Codex generation.",
+  "status": "finalization",
+  "phase": {
+    "current": "finalization",
+    "history": ["initialization", "spine-integration", "handshake-draft", "integration-readiness", "merge-candidate", "merge-review", "finalization"]
+  },
+  "owners": [
+    "sovereign-intelligence"
+  ],
+  "dependencies": [
+    "avot.telemetry",
+    "scroll.templates"
+  ],
+  "capabilities": [
+    "avot.orchestration",
+    "manifest.pipeline",
+    "codex.generation",
+    "catalytic.lane",
+    "runtime.spine"
+  ],
+  "entrypoints": {
+    "portal": "branches/tyme-core-dev/index.html",
+    "notes": "branches/tyme-core-dev/notes/",
+    "manifests": "branches/tyme-core-dev/manifests/",
+    "codex_plan": "branches/tyme-core-dev/notes/codex_initialization.md",
+    "catalytic_plan": "branches/tyme-core-dev/notes/catalytic_initialization.md",
+    "trs_spec": "branches/tyme-core-dev/notes/runtime_spine_trs.md",
+    "codex_handshake": "branches/tyme-core-dev/notes/codex_handshake.md",
+    "pr_checklist": "branches/tyme-core-dev/notes/pr_checklist.md",
+    "trs_routing_table": "branches/tyme-core-dev/runtime-spine/routing_table.json",
+    "trs_codex_lane": "branches/tyme-core-dev/runtime-spine/lanes/trs_codex_integration.md",
+    "trs_lanes": "branches/tyme-core-dev/runtime-spine/lanes/",
+    "trs_ingress": "branches/tyme-core-dev/runtime-spine/lanes/ingress.md",
+    "trs_validation": "branches/tyme-core-dev/runtime-spine/lanes/validation.md",
+    "trs_orchestration": "branches/tyme-core-dev/runtime-spine/lanes/orchestration.md",
+    "trs_render_dispatch": "branches/tyme-core-dev/runtime-spine/lanes/render_dispatch.md",
+    "trs_egress_validation": "branches/tyme-core-dev/runtime-spine/lanes/egress_validation.md",
+    "trs_home": "branches/tyme-core-dev/runtime-spine/"
+  },
+  "readiness_gates": [
+    "Schema drafts approved (manifest, scroll, lab)",
+    "Renderer emits HTML + Markdown blocks",
+    "Validation hooks reject malformed payloads",
+    "Portal surfaces Codex snippets via feed",
+    "Catalytic lane emits health + rollback signals",
+    "Runtime Spine routes payloads through ingress → validation → orchestration → codex integration → render dispatch → egress validation",
+    "Routing table v0.5 published with gates + health signals and tagged stable (merge review → finalization)",
+    "Ingress, validation, orchestration, render dispatch, and egress validation lane specs documented",
+    "Codex handshake stabilized for integration readiness with ingress + egress validation",
+    "Handshake phase badges visible in portal + manifests",
+    "Egress fixtures validated for portal, scroll, and Chronicle badge payloads",
+    "PR checklist published and linked for merge readiness",
+    "Merge conflicts resolved for PR #X with Chronicle announcement stub and finalization gates"
+  ],
+  "next_steps": [
+    "Define AVOT contract for pluggable inference runners",
+    "Model manifest loader lifecycle (parse, validate, promote)",
+    "Prototype Codex renderer that consumes manifest metadata",
+    "Ship sample Codex payloads for validation",
+    "Draft catalytic routing, health probes, and rollback levers",
+    "Surface sealed Codex integration lane in portal + manifests",
+    "Wire render dispatch badges and telemetry to portal surfaces",
+    "Publish Codex handshake expectations into renderer tests",
+    "Advance to final merge and broadcast prep with Chronicle announcement + telemetry wiring"
+  ]
+}
