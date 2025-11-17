@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tyme-Core-Dev Portal</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d10;
+      --panel: #13161d;
+      --accent: #8fdfff;
+      --muted: #c7d2e0;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 30% 20%, rgba(143,223,255,0.08), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(255,140,255,0.05), transparent 30%),
+                  var(--bg);
+      color: #e8eef7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .frame {
+      width: min(960px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.9rem;
+      letter-spacing: 0.03em;
+    }
+    p.lede {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card {
+      background: linear-gradient(135deg, rgba(143,223,255,0.04), rgba(255,140,255,0.04));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      min-height: 170px;
+    }
+    .card h3 {
+      margin: 0 0 0.5rem;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+    ul {
+      margin: 0.25rem 0 0.5rem 1.1rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(143,223,255,0.14);
+      color: var(--accent);
+      border: 1px solid rgba(143,223,255,0.35);
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.85rem;
+      margin-right: 0.35rem;
+    }
+    footer {
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header>
+      <div class="pill">⚙️ Tyme Core</div>
+      <h1>Tyme-Core-Dev Portal</h1>
+      <p class="lede">Developer node for the Sovereign Intelligence lattice: stage AVOT orchestration, manifest drafts, and Codex generation pipelines.</p>
+    </header>
+
+    <section class="grid" aria-label="Workbench">
+      <div class="card">
+        <h3>AVOT orchestration</h3>
+        <ul>
+          <li>Define messaging contracts between AVOT modules.</li>
+          <li>Map core lifecycle hooks (init → converge → emit).</li>
+          <li>Prototype an in-browser harness for live testing.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Manifest pipeline</h3>
+        <ul>
+          <li>Draft sub-manifests for Core services in <code>manifests/</code>.</li>
+          <li>Align fields with <code>manifest/tyme_manifest.json</code>.</li>
+          <li>Prepare validation scripts before promotion.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Codex generation</h3>
+        <ul>
+          <li>Document the runtime API and orchestration flows.</li>
+          <li>Map inputs/outputs for Scroll renderers.</li>
+          <li>Plan automated publishing to <code>docs/</code>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <span class="pill">🚀 Ready for prototyping</span>
+      <span class="pill">📜 Sovereign language preserved</span>
+      <span>Promote stable components into the Crown of Tyme manifest.</span>
+    </footer>
+  </div>
+</body>
+</html>
