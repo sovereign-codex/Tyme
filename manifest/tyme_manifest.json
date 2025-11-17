@@ -1,5 +1,11 @@
 {
   "name": "Crown of Tyme",
   "version": "0.2.0",
-  "modules": []
+  "modules": [
+    {
+      "name": "Tyme-Core-Dev",
+      "path": "branches/tyme-core-dev",
+      "description": "Developer portal for Tyme Core orchestration, manifest drafting, and Codex documentation."
+    }
+  ]
 }
