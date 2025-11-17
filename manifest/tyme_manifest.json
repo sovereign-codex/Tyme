@@ -1,5 +1,42 @@
 {
   "name": "Crown of Tyme",
   "version": "0.2.0",
-  "modules": []
+  "modules": [
+    {
+      "name": "Tyme-Core-Dev",
+      "path": "branches/tyme-core-dev",
+      "description": "Developer portal for Tyme Core orchestration, manifest drafting, and Codex documentation.",
+      "status": "finalization",
+      "phase": {
+        "current": "finalization",
+        "history": ["initialization", "spine-integration", "handshake-draft", "integration-readiness", "merge-candidate", "merge-review", "finalization"]
+      },
+      "entrypoint": "branches/tyme-core-dev/index.html",
+      "capabilities": [
+        "avot.orchestration",
+        "manifest.pipeline",
+        "codex.generation",
+        "catalytic.lane",
+        "runtime.spine"
+      ],
+      "dependencies": [
+        "avot.telemetry",
+        "scroll.templates"
+      ],
+      "notes": [
+        "branches/tyme-core-dev/notes/bootstrap.md",
+        "branches/tyme-core-dev/notes/codex_initialization.md",
+        "branches/tyme-core-dev/notes/catalytic_initialization.md",
+        "branches/tyme-core-dev/notes/runtime_spine_trs.md",
+        "branches/tyme-core-dev/notes/pr_checklist.md",
+        "branches/tyme-core-dev/notes/codex_handshake.md",
+        "branches/tyme-core-dev/runtime-spine/lanes/trs_codex_integration.md",
+        "branches/tyme-core-dev/runtime-spine/lanes/ingress.md",
+        "branches/tyme-core-dev/runtime-spine/lanes/validation.md",
+        "branches/tyme-core-dev/runtime-spine/lanes/orchestration.md",
+        "branches/tyme-core-dev/runtime-spine/lanes/render_dispatch.md",
+        "branches/tyme-core-dev/runtime-spine/lanes/egress_validation.md"
+      ]
+    }
+  ]
 }
