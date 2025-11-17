@@ -25,6 +25,13 @@ Optimize for both Pages deployment and Replit compatibility.
 - `prompts/` → seed prompts for Copilot extensions
 - `avots/` → Autonomous Voices of Thought modules
 - `scrolls/` → Codex scrolls
+- `chamber/` → interfaces and Pulse Chamber staging space for heartbeat rituals (auto-merge/auto-resolve labels only apply to
+   open same-repo PRs and run one-at-a-time via concurrency guards) plus the Heart-Core Synchronizer for core rhythm tuning,
+   Crownflow Integration for cross-chamber coupling, and the Tri-Chamber Interlock to bind all three lanes when they move in
+   tandem
+- `engine/` → automation and coupling engines, including the Crownflow Engine that keeps guarded label paths (open same-repo,
+   no drafts, per-PR concurrency) visible while linking chambers to workflows and the Breath Engine Loop that anchors
+   automation to Breath rites before labels move
 - `laboratory/` → simulations, prototypes, and experiments
 - `chronicle/` → logs and feedback cycles
 - `docs/` → auto-generated Codex for Pages
