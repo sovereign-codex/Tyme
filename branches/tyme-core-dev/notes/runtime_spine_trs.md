@@ -3,7 +3,7 @@
 ## Purpose
 The Tyme Runtime Spine (TRS) provides sovereign routing and orchestration for manifests, scroll payloads, and AVOT execution. It keeps ingress, validation, orchestration, and render dispatch lanes aligned so Codex and Crown outputs remain consistent.
 
-**Phase**: Initialization → Spine Integration → Handshake Draft → Integration Readiness → Merge Candidate → **Merge Review (current)** — routing table v0.5 promoted to stable with readiness and rollback gates sealed for finalization.
+**Phase**: Initialization → Spine Integration → Handshake Draft → Integration Readiness → Merge Candidate → Merge Review → **Finalization (current)** — routing table v0.5 stable, merge conflicts resolved, readiness + rollback gates sealed for merge.
 
 ## Lanes (v0.5)
 - **Ingress**: receives manifest drafts, scroll summaries, and telemetry snapshots; normalizes metadata and enforces shape checks. See `runtime-spine/lanes/ingress.md`.

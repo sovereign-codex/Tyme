@@ -24,10 +24,11 @@
 - [ ] Wire portal badges to routing table health signals (renderer success, preview acceptance, render latency)
 - [x] Exercise egress fixtures for portal blocks, scroll markdown, and Chronicle badges
 
-## Merge review readiness
+## Finalization readiness
 - [x] Mark Integration Readiness complete and advance to Merge Candidate in portal + manifests
 - [x] Advance to Merge Review and refresh portal + manifests + checklist
-- [x] Tag routing table v0.5 as stable for Integration Readiness / Merge Review
+- [x] Resolve merge conflicts for PR #X and update portal, manifests, and checklist for finalization
+- [x] Tag routing table v0.5 as stable for Integration Readiness / Merge Review / Finalization
 - [x] Publish PR checklist at `notes/pr_checklist.md` and link from portal/manifest
 - [ ] Chronicle announcement draft prepared for Codex broadcast prep/finalization
 

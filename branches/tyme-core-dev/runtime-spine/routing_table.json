@@ -2,11 +2,11 @@
   "version": "0.5.0",
   "release": {
     "status": "stable",
-    "tag": "merge-review",
-    "notes": "Integration readiness sealed; merge review + finalization underway for Codex handshake and egress validation"
+    "tag": "finalization",
+    "notes": "Integration readiness sealed; merge review conflicts resolved; final merge prep for Codex handshake and egress validation"
   },
   "handshake": {
-    "phase": "merge-review",
+    "phase": "finalization",
     "ingress_requirements": [
       "trace_id",
       "metadata.submitter",

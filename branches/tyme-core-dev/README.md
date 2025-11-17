@@ -8,7 +8,8 @@ Tyme-Core-Dev is the working branch for building the central Tyme Core runtime a
 - **Handshake Draft Phase** → Codex handshake, egress validation readiness, and promotion rubric badges across portal + manifests.
 - **Integration Readiness Phase** → stabilized envelopes, finalized egress fixtures, and routing table v0.5 with Codex handshake gates.
 - **Merge Candidate Phase** → routing table v0.5 promoted to stable, PR checklist generated, and readiness badges prepped for merge.
-- **Merge Review Phase (CURRENT)** → merge checklist executed, routing table v0.5 promoted to stable release, and finalization gates opened for broadcast prep.
+- **Merge Review Phase** → merge checklist executed, routing table v0.5 promoted to stable release, and finalization gates opened for broadcast prep.
+- **Finalization Phase (CURRENT)** → merge conflicts resolved, routing table v0.5 confirmed stable, and merge candidate prepared for Crown alignment.
 
 ## Workspace layout
 - `index.html` — landing page for the developer node.

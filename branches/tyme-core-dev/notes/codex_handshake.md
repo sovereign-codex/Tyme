@@ -1,11 +1,11 @@
-# Codex handshake (merge review) — TRS → Codex → Dispatch
+# Codex handshake (finalization) — TRS → Codex → Dispatch
 
 ## Purpose
 Document the handshake between the Runtime Spine (TRS) and Codex renderers so payloads stay consistent from ingress through egress validation. This integration-ready draft sets guardrails for readiness gates, rollback hooks, and telemetry that the routing table can enforce.
 
 ## Handshake phases
 1) **Ingress affirmation**: payloads entering Codex must carry `metadata.submitter`, `timestamp`, `trace_id`, and `readiness_hint` from ingress normalization; malformed envelopes are rejected.
-2) **Merge review (current)**: Codex integration accepts only `[draft, review, soak]` readiness and requires a `rollback_handle` for safe-stop; readiness `broadcast` is set only after egress validation passes and Chronicle badge health aligns.
+2) **Finalization (current)**: Codex integration accepts only `[draft, review, soak]` readiness and requires a `rollback_handle` for safe-stop; merge conflicts resolved; readiness `broadcast` is set only after egress validation passes and Chronicle badge health aligns.
 3) **Renderer contract**: Codex renderers emit `codex.render` (broadcast) and `codex.preview` (soak) bundles with provenance, renderer profile, promotion rubric markers, and checksum placeholders.
 4) **Render dispatch lanes**: render bundles are fanned out by render dispatch lanes (portal feed, scroll broadcast) that apply promotion rubric checks before egress validation, attaching badge + provenance anchors.
 5) **Egress validation**: validates outbound artifacts (HTML blocks, Markdown scrolls, Chronicle badges) for anchors, provenance, readiness, and checksum integrity before broadcast; fixtures now mirror the stable envelope.

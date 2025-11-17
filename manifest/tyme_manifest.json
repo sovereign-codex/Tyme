@@ -6,10 +6,10 @@
       "name": "Tyme-Core-Dev",
       "path": "branches/tyme-core-dev",
       "description": "Developer portal for Tyme Core orchestration, manifest drafting, and Codex documentation.",
-      "status": "merge-review",
+      "status": "finalization",
       "phase": {
-        "current": "merge-review",
-        "history": ["initialization", "spine-integration", "handshake-draft", "integration-readiness", "merge-candidate", "merge-review"]
+        "current": "finalization",
+        "history": ["initialization", "spine-integration", "handshake-draft", "integration-readiness", "merge-candidate", "merge-review", "finalization"]
       },
       "entrypoint": "branches/tyme-core-dev/index.html",
       "capabilities": [
