@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tyme-Core-Dev Portal</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d10;
+      --panel: #13161d;
+      --panel-2: #0f1218;
+      --accent: #8fdfff;
+      --accent-2: #d4b1ff;
+      --muted: #c7d2e0;
+      --border: rgba(255, 255, 255, 0.08);
+      --glow: 0 0 32px rgba(143, 223, 255, 0.25);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 30% 20%, rgba(143,223,255,0.08), transparent 35%),
+                  radial-gradient(circle at 80% 0%, rgba(255,140,255,0.05), transparent 30%),
+                  var(--bg);
+      color: #e8eef7;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .frame {
+      width: min(1080px, 100%);
+      background: linear-gradient(145deg, rgba(19,22,29,0.85), rgba(11,13,16,0.92));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.25rem;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .title h1 {
+      margin: 0;
+      font-size: clamp(1.6rem, 2vw, 2rem);
+      letter-spacing: 0.02em;
+    }
+    .title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .pill {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(143, 223, 255, 0.1);
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      box-shadow: var(--glow);
+    }
+    .phase-track {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .phase {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .phase.done { color: #9ae6b4; border-color: rgba(154,230,180,0.35); }
+    .phase.current { color: var(--accent); border-color: rgba(143,223,255,0.4); box-shadow: var(--glow); }
+    .phase.upnext { color: var(--muted); border-style: dashed; }
+    .grid { display: grid; gap: 1rem; }
+    .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(143,223,255,0.12), transparent 40%),
+                  linear-gradient(60deg, rgba(212,177,255,0.08), transparent 35%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+    }
+    .card p {
+      margin: 0 0 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+    .meta span {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+    .list li {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .badge {
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(143,223,255,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(143,223,255,0.3);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+    }
+    .section-title {
+      margin: 0.8rem 0 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .progress {
+      position: relative;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      margin-top: 0.35rem;
+    }
+    .progress span {
+      position: absolute;
+      inset: 0;
+      width: var(--value, 50%);
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    footer {
+      margin-top: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <main class="frame">
+    <header>
+      <div class="title">
+        <h1>Tyme-Core-Dev Portal</h1>
+        <p>Operational node for AVOT orchestration, manifest pipeline, and Codex generation.</p>
+      </div>
+      <div class="pill">Status: Merge Review · Finalization underway</div>
+    </header>
+
+    <div class="phase-track" aria-label="Phase tracker">
+      <div class="phase done">Initialization</div>
+      <div class="phase done">Spine Integration</div>
+      <div class="phase done">Handshake Draft</div>
+      <div class="phase done">Integration Readiness</div>
+      <div class="phase done">Merge Candidate</div>
+      <div class="phase current">Merge Review</div>
+      <div class="phase upnext">Finalization</div>
+    </div>
+
+    <section class="grid cols-3">
+      <div class="card">
+        <h3>Initialize the core</h3>
+        <p>Bring up the local server, verify the portal, and sync the manifest draft so downstream nodes can read your intent.</p>
+        <div class="meta">
+          <span>Serve: <code>python -m http.server 8000</code></span>
+          <span>Entry: branches/tyme-core-dev/index.html</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>AVOT orchestration</h3>
+        <p>Define the runtime contract for Tyme AVOTs (init, dispatch, telemetry hooks) and map where orchestration lands in the lattice.</p>
+        <div class="meta">
+          <span>Task: contract spec</span>
+          <span>Owner: Sovereign Intelligence</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Manifest pipeline</h3>
+        <p>Draft the ingest → validate → publish flow for manifests. Ensure promotion rules into <code>manifest/tyme_manifest.json</code> are explicit.</p>
+        <div class="meta">
+          <span>Task: lifecycle model</span>
+          <span>State: in progress</span>
+        </div>
+      </div>
+    </section>
+
+    <h4 class="section-title">Active tracks</h4>
+    <section class="grid cols-2">
+      <div class="card">
+        <h3>Runtime readiness</h3>
+        <ul class="list">
+          <li><span>AVOT contract draft</span><span class="badge">Ready to write</span></li>
+          <li><span>Telemetry + health probes</span><span class="badge">Needs design</span></li>
+          <li><span>Execution sandbox notes</span><span class="badge">Capture in notes</span></li>
+          <li><span>Runtime Spine routing table</span><span class="badge">v0.5 stable</span></li>
+          <li><span>Egress fixtures (portal, scroll, badge)</span><span class="badge">Ready</span></li>
+        </ul>
+        <div class="progress" aria-label="Runtime progress"><span style="--value: 55%"></span></div>
+      </div>
+      <div class="card">
+        <h3>Codex & documentation</h3>
+        <ul class="list">
+          <li><span>Codex renderer inputs</span><span class="badge">Collecting</span></li>
+          <li><span>Scroll alignment</span><span class="badge">Pending</span></li>
+          <li><span>Manifest → Scroll mapping</span><span class="badge">Outline</span></li>
+        </ul>
+        <div class="progress" aria-label="Codex progress"><span style="--value: 25%"></span></div>
+      </div>
+    </section>
+
+    <h4 class="section-title">Codex initialization</h4>
+    <section class="grid cols-2">
+      <div class="card">
+        <h3>Contracts & payloads</h3>
+        <p>Codify schemas for manifests, scrolls, and lab outputs. Ship sample payloads that the renderer can ingest without manual mapping.</p>
+        <ul class="list">
+          <li><span>Schema draft (manifests, scrolls, labs)</span><span class="badge">In progress</span></li>
+          <li><span>Sample payloads for renderer</span><span class="badge">Ready</span></li>
+          <li><span>Validation hooks (lint + shape)</span><span class="badge">Planned</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Renderer pathway</h3>
+        <p>Prototype a text-first renderer that emits HTML + Markdown blocks. Wire the portal to surface rendered snippets for review.</p>
+        <ul class="list">
+          <li><span>HTML block feed for portal</span><span class="badge">Designing</span></li>
+          <li><span>Markdown scroll output</span><span class="badge">Draft spec</span></li>
+          <li><span>Promotion gates (draft → review → broadcast)</span><span class="badge">Define</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <h4 class="section-title">Catalytic initialization</h4>
+    <section class="grid cols-2">
+      <div class="card">
+        <h3>Routing & rollback</h3>
+        <p>Shape the catalytic lane that ingests manifests + scrolls, validates, then dispatches to Codex with rollback switches in place.</p>
+        <ul class="list">
+          <li><span>Queue and dispatch rules</span><span class="badge">Drafting</span></li>
+          <li><span>Safe-stop / circuit breaker</span><span class="badge">Needs spec</span></li>
+          <li><span>Promotion rubric (draft → soak → broadcast)</span><span class="badge">To align</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Health & observability</h3>
+        <p>Capture heartbeat cadence, queue depth, and validation error rates; surface badges in the portal and Chronicle feed.</p>
+        <ul class="list">
+          <li><span>Health payload JSON</span><span class="badge">Scoping</span></li>
+          <li><span>Telemetry alignment with AVOT</span><span class="badge">Open</span></li>
+          <li><span>Status badges for portal</span><span class="badge">Planned</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <h4 class="section-title">Runtime Spine (TRS)</h4>
+    <section class="grid cols-2">
+      <div class="card">
+        <h3>Spine lanes</h3>
+        <p>Define ingress, validation, orchestration, render dispatch, and egress validation lanes with clear inputs, outputs, and readiness gates for integration-ready traffic.</p>
+        <ul class="list">
+          <li><span>Codex integration lane sealed</span><span class="badge">Sealed</span></li>
+          <li><span>Ingress + validation lane specs</span><span class="badge">Documented</span></li>
+          <li><span>Orchestration lane rollback hooks</span><span class="badge">Aligned</span></li>
+          <li><span>Render dispatch lanes (portal + scroll)</span><span class="badge">Aligned</span></li>
+          <li><span>Egress validation fixtures</span><span class="badge">Ready</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Sovereign routing table</h3>
+        <p>Initialize the TRS routing table so manifest + scroll payloads flow through the right lanes before Codex emission.</p>
+        <ul class="list">
+          <li><span>Routing table JSON (v0.5 stable)</span><span class="badge">Updated</span></li>
+          <li><span>Codex integration acceptance gates</span><span class="badge">Sealed</span></li>
+          <li><span>Render dispatch + egress validation lanes</span><span class="badge">Integration-ready</span></li>
+          <li><span>Promotion rubric (draft → soak → broadcast)</span><span class="badge">Defined</span></li>
+          <li><span>Health + rollback signals</span><span class="badge">Expanded</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <h4 class="section-title">Links & artifacts</h4>
+    <section class="grid cols-3">
+      <div class="card">
+        <h3>Notes</h3>
+        <p>Capture drafts, decisions, and telemetry expectations for AVOTs and manifest loaders.</p>
+        <div class="meta">
+          <span><a href="notes/bootstrap.md">Bootstrap checklist</a></span>
+          <span><a href="notes/codex_initialization.md">Codex plan</a></span>
+          <span><a href="notes/catalytic_initialization.md">Catalytic plan</a></span>
+          <span><a href="notes/runtime_spine_trs.md">Runtime Spine spec</a></span>
+          <span><a href="notes/pr_checklist.md">PR checklist (merge review)</a></span>
+          <span><a href="notes/codex_handshake.md">Codex handshake (integration readiness)</a></span>
+          <span><a href="runtime-spine/lanes/ingress.md">Ingress lane</a></span>
+          <span><a href="runtime-spine/lanes/validation.md">Validation lane</a></span>
+          <span><a href="runtime-spine/lanes/orchestration.md">Orchestration lane</a></span>
+          <span><a href="runtime-spine/lanes/trs_codex_integration.md">TRS → Codex lane</a></span>
+          <span><a href="runtime-spine/lanes/render_dispatch.md">Render dispatch lane</a></span>
+          <span><a href="runtime-spine/lanes/egress_validation.md">Egress validation lane</a></span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Manifest draft</h3>
+        <p>Living manifest for this node. Promote stable fields into the root <code>tyme_manifest.json</code>.</p>
+        <div class="meta">
+          <span><a href="manifests/tyme_core_dev.manifest.json">View draft</a></span>
+          <span><a href="runtime-spine/routing_table.json">Routing table</a></span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Promotion path</h3>
+        <p>When the node is ready, sync updates to <code>manifest/tyme_manifest.json</code> and announce in Chronicle.</p>
+        <div class="meta">
+          <span>Visibility: lattice-wide</span>
+          <span>State: draft</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Keep the portal fresh with the latest checkpoints. Downstream AVOTs ingest from here.</span>
+      <span>Contact: sovereign-intelligence@tyme</span>
+    </footer>
+  </main>
+</body>
+</html>
