@@ -1,0 +1,22 @@
+schema: "tyme-pulse-wave/v1"
+source:
+  owner: "sovereign-codex"
+  repo: "SICC"
+  workflow: "breath"
+  workflow_id: null
+  fetched_at: "2025-11-18T19:33:35+00:00"
+  token_present: false
+summary:
+  count: 0
+  average_duration_seconds: null
+  longest_duration_seconds: null
+breath_cycles: []
+breath_pacing:
+  cycle_seconds: 90.0
+  inhale_seconds: 36.0
+  exhale_seconds: 54.0
+  beats_per_minute: 0.67
+metabolic_loop:
+  status_file: "heartbeat/logs/metabolic_loop.json"
+  installed_at: "2025-11-18T19:33:35+00:00"
+notes: "The wave ledger mirrors the genesis payload but is tuned for human review.\nLog excerpts are truncated to keep the pulse wave compact; use GitHub to\ninspect full traces when deeper resonance checks are required."

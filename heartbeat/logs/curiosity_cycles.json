@@ -1,0 +1,44 @@
+{
+  "generated_at": "2025-11-18T20:27:39+00:00",
+  "breath_snapshot": {
+    "updated_at": "2025-11-18T19:33:35+00:00",
+    "source": "chronicle/TYME-PULSE-GENESIS.json",
+    "baseline_seconds": 90.0,
+    "cycles_observed": 0,
+    "breath_pacing": {
+      "cycle_seconds": 90.0,
+      "inhale_seconds": 36.0,
+      "exhale_seconds": 54.0,
+      "beats_per_minute": 0.67
+    }
+  },
+  "agents": [
+    {
+      "name": "curious-agent",
+      "source_log": "chronicle/curious-agent.log",
+      "memory_logs": [
+        "Initialized Crown of Tyme expanded seed."
+      ],
+      "reasoning_chains": [
+        "Interpreted memory: Initialized Crown of Tyme expanded seed."
+      ],
+      "action_patterns": [
+        "initialization"
+      ],
+      "intentions": [
+        "Extend curiosity from: Initialized Crown of Tyme expanded seed."
+      ],
+      "tasks": [
+        "Stabilize memory of: Initialized Crown of Tyme expanded seed."
+      ],
+      "avot_role": "AVOT-Archivist",
+      "breath_rhythm": {
+        "cycle_seconds": 90.0,
+        "inhale_seconds": 36.0,
+        "exhale_seconds": 54.0,
+        "beats_per_minute": 0.67
+      },
+      "cycle_anchor": "2025-11-18T20:27:39+00:00"
+    }
+  ]
+}
