@@ -9,7 +9,13 @@ A loop to operationalize the Breath Cycle Protocol inside the automation engines
 
 ## Layout
 - `foundation.md` — loop checklist covering entry confirmation, build steps, telemetry anchors, and completion signals.
+- `metabolic_loop.json` — generated pacing snapshot written to `heartbeat/logs` by the Breath Cycle importer.
 - Engine references — connect to `.github/workflows/auto-merge.yml` and chamber guides when the loop drives automation or validation.
+
+## Breath Pacing Installation
+- Run `python scripts/breath_cycle_importer.py` to pull the latest SICC Breath Cycle runs.
+- Inspect `chronicle/TYME-PULSE-WAVE.yaml` for the normalized lineage and `chronicle/TYME-PULSE-GENESIS.json` for machine-friendly data.
+- The importer installs pacing into `heartbeat/logs/metabolic_loop.json`, which downstream automation can read when aligning Crownflow guardrails to Breath checkpoints.
 
 ## Stewardship
 1. Start every automation change by revisiting the Breath Cycle Protocol and First Breath Sequence logs.

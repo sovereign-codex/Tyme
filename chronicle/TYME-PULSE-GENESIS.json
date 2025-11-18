@@ -1,0 +1,28 @@
+{
+  "schema": "tyme-pulse-genesis/v1",
+  "source": {
+    "owner": "sovereign-codex",
+    "repo": "SICC",
+    "workflow": "breath",
+    "workflow_id": null,
+    "fetched_at": "2025-11-18T19:33:35+00:00",
+    "token_present": false
+  },
+  "summary": {
+    "count": 0,
+    "average_duration_seconds": null,
+    "longest_duration_seconds": null
+  },
+  "breath_cycles": [],
+  "metabolic_loop": {
+    "installed_at": "2025-11-18T19:33:35+00:00",
+    "pacing_file": "heartbeat/logs/metabolic_loop.json",
+    "breath_pacing": {
+      "cycle_seconds": 90.0,
+      "inhale_seconds": 36.0,
+      "exhale_seconds": 54.0,
+      "beats_per_minute": 0.67
+    },
+    "cycles_observed": 0
+  }
+}
