@@ -1,0 +1,27 @@
+name: subnet-bridge
+description: >
+  Provide a clear pathway between TYME / AVOTs and external sovereign subnets
+  (e.g., Aurelius-Subnet, Bittensor-like systems, or other living blockchains).
+
+triggers:
+  - name: on_subnet_request
+    source: "user_or_agent"
+    event: "subnet_action_requested"
+
+steps:
+  - name: classify_request
+    action: "AVOT-Convergence.classify"
+    description: "Determine if this is research, publishing, staking, or governance."
+
+  - name: apply_guardian_policy
+    action: "AVOT-Guardian.evaluate"
+    description: "Check alignment with Garden Flame and Sovereign Subnet Charter."
+
+  - name: perform_action
+    action: "Aurelius-Subnet.execute"
+    description: "Perform the approved action on the subnet (conceptual hook)."
+
+outputs:
+  - name: subnet-log
+    target_repo: "Tyme-Core"
+    file: "orchestration/subnet-log.md"

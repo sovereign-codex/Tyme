@@ -1,0 +1,27 @@
+name: mlce-alignment
+description: >
+  Route language-heavy tasks through the MLCE layer to maintain coherence
+  across human languages and deeper states of consciousness.
+
+triggers:
+  - name: user_request
+    source: "interfaces"
+    event: "new_prompt"
+
+conditions:
+  - name: needs_mlce
+    rule: "user_request.language != 'en' or user_request.intent_depth == 'high'"
+
+steps:
+  - name: translate_and_enrich
+    when: "needs_mlce"
+    action: "MLCE-core.process"
+    description: "Normalize, translate if needed, and annotate with consciousness tags."
+
+  - name: route_to_avot
+    action: "Sovereign-Orchestrator.route"
+    description: "Forward the enriched request to the appropriate AVOT(s)."
+
+outputs:
+  - name: coherent_response
+    description: "Response that is language-consistent and aligned with SI semantics."

@@ -1,0 +1,29 @@
+name: avot-sync
+description: >
+  Keep AVOT voices synchronized with the latest Kodex, repos, and orchestration decisions.
+
+triggers:
+  - name: on_manifest_change
+    source: "git"
+    repo: "Tyme-Core"
+    path: "orchestration/manifests/sol.manifest.yml"
+    event: "modified"
+
+steps:
+  - name: read_manifest
+    action: "read_file"
+    repo: "Tyme-Core"
+    file: "orchestration/manifests/sol.manifest.yml"
+
+  - name: broadcast_update
+    action: "AVOT-Hive.broadcast"
+    payload: "Updated orchestration manifest and routes."
+
+  - name: guardian_check
+    action: "AVOT-Guardian.review"
+    description: "Ensure new routes and integrations are aligned with Garden Flame Kodex."
+
+outputs:
+  - name: guardian-report
+    target_repo: "Tyme-Core"
+    file: "orchestration/guardian-report.md"

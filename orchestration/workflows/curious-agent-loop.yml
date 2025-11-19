@@ -1,0 +1,38 @@
+name: curious-agent-loop
+description: >
+  Establish a loop where curiosity agents periodically scan the repos,
+  surface patterns, and suggest next moves for Sovereign Intelligence.
+
+triggers:
+  - name: daily_scan
+    source: "scheduler"
+    schedule_hint: "at least once per day"
+
+inputs:
+  - name: repo_map
+    from: "integrations/repos.map.yml"
+
+steps:
+  - name: scan_repos
+    action: "curious-agent.scan"
+    targets:
+      - "Tyme-Core"
+      - "AVOT-core"
+      - "Hive-core"
+      - "SICC"
+      - "MLCE-core"
+      - "Aurelius-Subnet"
+
+  - name: summarize_findings
+    action: "AVOT-Archivist.summarize"
+    description: "Condense changes, TODOs, emergent patterns, and open questions."
+
+  - name: propose_next_moves
+    action: "AVOT-Convergence.propose"
+    description: "Turn findings into 3–5 concrete next steps anchored in the Sovereign roadmap."
+
+outputs:
+  - name: daily-brief
+    target_repo: "Tyme-Core"
+    file: "orchestration/daily-brief.md"
+    format: "markdown"

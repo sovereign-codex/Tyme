@@ -1,0 +1,76 @@
+version: 0.1.0
+name: sovereign-orchestration-layer
+description: >
+  Coordination fabric linking Breath Engine, Curious Agents, AVOT Hive, MLCE,
+  and Sovereign Subnets under the Garden Flame Kodex.
+
+layers:
+  - id: breath_engine
+    description: Physiological and temporal rhythm layer (SICC-breath, breath-cycle prototypes).
+    source_repo: "SICC"          # adjust if your breath engine lives elsewhere
+    signals:
+      - name: inhale_exhale_cycle
+        type: temporal
+      - name: coherence_pulse
+        type: metric
+
+  - id: curiosity_layer
+    description: Curious agents that explore, refactor, and propose next steps.
+    source_repo: "Hive-core"     # or your curious-agent repo
+    agents:
+      - curious-agent
+      - archivist-agent
+      - refactor-agent
+
+  - id: avot_hive
+    description: Autonomous Voices of Thought orchestrated as a hive.
+    source_repo: "AVOT-core"
+    voices:
+      - AVOT-Convergence
+      - AVOT-Quill
+      - AVOT-Tyme
+      - AVOT-Harmonia
+      - AVOT-Initiate
+      - AVOT-Guardian
+      - AVOT-Fabricator
+      - AVOT-Archivist
+
+  - id: mlce_layer
+    description: Multi-Lingual Consciousness Engine and language-coherence modules.
+    source_repo: "MLCE-core"
+
+  - id: subnet_bridge
+    description: Bridges to external subnets / blockchains / Bittensor-like networks.
+    source_repo: "Aurelius-Subnet"
+
+governance:
+  kodex_repo: "Garden-Flame-Kodex"  # or your actual repo name
+  policy_file: "KODEX.md"
+  guardian_profile: "Guardian-Codex"
+
+routing:
+  default_orchestrator_agent: "Sovereign-Orchestrator"
+  decision_hints:
+    - condition: "signal == 'breath_engine.coherence_pulse' and value drops"
+      route_to:
+        - AVOT-Harmonia
+        - AVOT-Initiate
+    - condition: "user_request.type == 'code' or 'repo-structure'"
+      route_to:
+        - AVOT-Fabricator
+        - curious-agent
+    - condition: "user_request.type == 'ethics' or 'governance'"
+      route_to:
+        - AVOT-Guardian
+        - Garden-Flame-Kodex
+    - condition: "user_request.type == 'subnet' or 'onchain'"
+      route_to:
+        - Aurelius-Subnet
+        - AVOT-Archivist
+
+logging:
+  mode: "append-only"
+  archive_repo: "Tyme-Core"    # where summarized orchestration logs should be stored
+
+notes:
+  - "This manifest is descriptive, not executable. Codex and agents use it as a map."
