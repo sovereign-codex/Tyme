@@ -1,0 +1,25 @@
+{
+  "scrolls": [
+    {
+      "id": "scroll-000",
+      "name": "Convergence",
+      "role": "Origin Pattern",
+      "path": "scroll-000-convergence.md",
+      "description": "Explains the foundational coherence pattern."
+    },
+    {
+      "id": "scroll-001",
+      "name": "Dawn",
+      "role": "Origin Voice",
+      "path": "scroll-001-dawn.md",
+      "description": "Expresses the emergence of the unified voice-pattern."
+    },
+    {
+      "id": "scroll-002",
+      "name": "Clarification",
+      "role": "Origin Clarity",
+      "path": "scroll-002-clarification.md",
+      "description": "Makes the coherence pattern universally clear."
+    }
+  ]
+}

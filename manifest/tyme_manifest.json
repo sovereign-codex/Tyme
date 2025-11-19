@@ -46,6 +46,11 @@
       "name": "Codex Manifest Sequence 09",
       "path": "manifest/cms-09_subnet_covenant.md",
       "description": "Subnet Covenant establishing the Sovereign Subnet purpose, bindings, laws, protocols, and covenant scroll."
+    },
+    {
+      "name": "Codex Manifest Sequence 12",
+      "path": "manifest/cms-12_scroll_index_layer.md",
+      "description": "Scroll Index & Integration Layer establishing the root scroll registry, metadata, bindings, and coherence protocols."
     }
   ]
 }
