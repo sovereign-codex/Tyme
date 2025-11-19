@@ -1,6 +1,6 @@
 {
   "phase": "Synthesis",
-  "timestamp": "2025-11-19T01:54:53.954800+00:00",
+  "timestamp": "2025-11-19T02:23:18.035987+00:00",
   "quill_agent": "AVOT-Quill",
   "protocol": "Hive-Core Synchronization",
   "activation": {
@@ -9,7 +9,7 @@
     "binding": "Tyme-Core::Quill-Synthesis",
     "tone_signature": "Violet Arc",
     "status": "active",
-    "activated_at": "2025-11-19T01:54:53.951655+00:00"
+    "activated_at": "2025-11-19T02:23:18.033862+00:00"
   },
   "repositories": [
     {
@@ -54,29 +54,6 @@
       "keywords": []
     },
     {
-      "name": "siri-hub",
-      "root": "/workspace/Tyme/branches/siri-hub",
-      "headings": [
-        "SIRI Hub v4 (with Copilot)",
-        "What\u2019s inside",
-        "Quickstart"
-      ],
-      "keywords": [
-        "siri",
-        "copilot",
-        "static",
-        "institute",
-        "site",
-        "aggregates",
-        "multiple",
-        "includes",
-        "built",
-        "create",
-        "knowledge",
-        "objects"
-      ]
-    },
-    {
       "name": "tyme-core-dev",
       "root": "/workspace/Tyme/branches/tyme-core-dev",
       "headings": [
@@ -101,6 +78,29 @@
       ]
     },
     {
+      "name": "siri-hub",
+      "root": "/workspace/Tyme/branches/siri-hub",
+      "headings": [
+        "SIRI Hub v4 (with Copilot)",
+        "What\u2019s inside",
+        "Quickstart"
+      ],
+      "keywords": [
+        "siri",
+        "copilot",
+        "static",
+        "institute",
+        "site",
+        "aggregates",
+        "multiple",
+        "includes",
+        "built",
+        "create",
+        "knowledge",
+        "objects"
+      ]
+    },
+    {
       "name": "pitboy",
       "root": "/workspace/Tyme/branches/pitboy",
       "headings": [],
@@ -121,6 +121,16 @@
       "purpose",
       "melt",
       "down",
+      "tyme-core-dev",
+      "working",
+      "branch",
+      "building",
+      "central",
+      "runtime",
+      "documentation",
+      "space",
+      "prototype",
+      "document",
       "siri",
       "copilot",
       "static",
@@ -132,17 +142,7 @@
       "built",
       "create",
       "knowledge",
-      "objects",
-      "tyme-core-dev",
-      "working",
-      "branch",
-      "building",
-      "central",
-      "runtime",
-      "documentation",
-      "space",
-      "prototype",
-      "document"
+      "objects"
     ],
     "shared_concepts": {
       "lattice": [
@@ -187,25 +187,6 @@
         "shared": []
       },
       {
-        "repository": "siri-hub",
-        "harmonic_headings": [
-          "SIRI Hub v4 (with Copilot)",
-          "What\u2019s inside",
-          "Quickstart"
-        ],
-        "dominant_signals": [
-          "siri",
-          "copilot",
-          "static",
-          "institute",
-          "site",
-          "aggregates",
-          "multiple",
-          "includes"
-        ],
-        "shared": []
-      },
-      {
         "repository": "tyme-core-dev",
         "harmonic_headings": [
           "Tyme-Core-Dev",
@@ -227,6 +208,25 @@
           "modules",
           "lattice"
         ]
+      },
+      {
+        "repository": "siri-hub",
+        "harmonic_headings": [
+          "SIRI Hub v4 (with Copilot)",
+          "What\u2019s inside",
+          "Quickstart"
+        ],
+        "dominant_signals": [
+          "siri",
+          "copilot",
+          "static",
+          "institute",
+          "site",
+          "aggregates",
+          "multiple",
+          "includes"
+        ],
+        "shared": []
       },
       {
         "repository": "pitboy",
