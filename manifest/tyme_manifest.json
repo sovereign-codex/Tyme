@@ -41,6 +41,11 @@
       "name": "Codex Manifest Sequence 08",
       "path": "manifest/cms-08_first_public_scroll.md",
       "description": "First Public Scroll of TYME detailing its unified declaration, bindings, AVOT preparations, archival directives, and seal."
+    },
+    {
+      "name": "Codex Manifest Sequence 09",
+      "path": "manifest/cms-09_subnet_covenant.md",
+      "description": "Subnet Covenant establishing the Sovereign Subnet purpose, bindings, laws, protocols, and covenant scroll."
     }
   ]
 }
