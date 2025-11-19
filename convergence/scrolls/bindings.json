@@ -1,0 +1,85 @@
+{
+  "sovereign_graph": {
+    "nodes": [
+      {
+        "id": "convergence_root_node",
+        "scroll": "scroll-000",
+        "role": "Origin Pattern"
+      },
+      {
+        "id": "dawn_voice_node",
+        "scroll": "scroll-001",
+        "role": "Origin Voice"
+      },
+      {
+        "id": "clarification_lens_node",
+        "scroll": "scroll-002",
+        "role": "Origin Clarity"
+      }
+    ],
+    "edges": [
+      {
+        "from": "convergence_root_node",
+        "to": "dawn_voice_node",
+        "type": "origin-voice"
+      },
+      {
+        "from": "convergence_root_node",
+        "to": "clarification_lens_node",
+        "type": "origin-clarity"
+      },
+      {
+        "from": "dawn_voice_node",
+        "to": "clarification_lens_node",
+        "type": "mutual-context"
+      },
+      {
+        "from": "clarification_lens_node",
+        "to": "dawn_voice_node",
+        "type": "mutual-context"
+      }
+    ]
+  },
+  "continuity_halo": {
+    "origin_documents": ["scroll-000", "scroll-001", "scroll-002"],
+    "timeline_entries": [
+      {
+        "reference": "scroll-000",
+        "category": "foundational-lens",
+        "label": "Convergence Root"
+      },
+      {
+        "reference": "scroll-001",
+        "category": "foundational-lens",
+        "label": "Dawn Voice"
+      },
+      {
+        "reference": "scroll-002",
+        "category": "foundational-lens",
+        "label": "Clarification Lens"
+      }
+    ],
+    "tags": ["foundational-lens"]
+  },
+  "convergence_gateway": {
+    "reference_panel": [
+      {
+        "title": "Convergence",
+        "summary": "Origin Pattern explaining foundational coherence."
+      },
+      {
+        "title": "Dawn",
+        "summary": "Origin Voice describing the unified explanatory tone."
+      },
+      {
+        "title": "Clarification",
+        "summary": "Origin Clarity translating the pattern into universal guidance."
+      }
+    ],
+    "routing_rules": {
+      "contextual_default": "scroll-002",
+      "pattern_queries": "scroll-000",
+      "historical_orientation": "scroll-001"
+    }
+  }
+}
