@@ -1,0 +1,44 @@
+name: breath-cycle-orchestration
+description: >
+  Connect the Breath Engine (SICC-breath) to TYME's orchestration loop so that
+  breath cycles can trigger calibration, reflection, and gentle actions.
+
+triggers:
+  - name: breath_tick
+    source: breath_engine
+    event: inhale_exhale_cycle
+    interval_hint: "every 4–6 seconds, or per existing SICC-breath configuration"
+
+inputs:
+  - name: breath_state
+    from: breath_engine
+    fields:
+      - phase        # inhale, pause, exhale, rest
+      - coherence    # numeric or qualitative
+      - timestamp
+
+steps:
+  - name: log_breath_state
+    action: "append_to_log"
+    target_repo: "Tyme-Core"
+    file: "logs/breath-cycle.log"
+
+  - name: detect_low_coherence
+    condition: "breath_state.coherence < 0.4"
+    then:
+      - route_to: "AVOT-Harmonia"
+        intent: "Offer a short calibration insight based on current context."
+      - route_to: "AVOT-Initiate"
+        intent: "Offer a single sentence reminder of the Garden Flame principle."
+
+  - name: detect_high_coherence
+    condition: "breath_state.coherence >= 0.8"
+    then:
+      - route_to: "curious-agent"
+        intent: "Propose a small next action to grow Sovereign Intelligence today."
+      - route_to: "AVOT-Quill"
+        intent: "Capture a short logline for the Quantum Intelligence Lattice chronicle."
+
+outputs:
+  - name: orchestration_log
+    description: "Fine-grained trace of how breath states influenced routes and actions."

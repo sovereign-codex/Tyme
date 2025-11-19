@@ -1,0 +1,28 @@
+repos:
+  tyme_core:
+    name: "Tyme-Core"
+    role: "Primary orchestration host and interface."
+
+  avot_core:
+    name: "AVOT-core"
+    role: "Autonomous Voices of Thought definitions and logic."
+
+  hive_core:
+    name: "Hive-core"
+    role: "Curious agents, indexing, and swarm behavior."
+
+  sicc:
+    name: "SICC"
+    role: "Breath Engine and coherence calibration workflows."
+
+  mlce_core:
+    name: "MLCE-core"
+    role: "Multi-Lingual Consciousness Engine and semantic alignment."
+
+  aurelius_subnet:
+    name: "Aurelius-Subnet"
+    role: "Sovereign subnet / living blockchain bridge."
+
+  garden_flame:
+    name: "Garden-Flame-Kodex"
+    role: "Ethical and harmonic foundation."
