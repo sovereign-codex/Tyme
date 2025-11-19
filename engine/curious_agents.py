@@ -39,6 +39,13 @@ class CuriousAgentScanner:
     curiosity_snapshot: Path = Path("heartbeat/logs/curiosity_cycles.json")
     metabolic_snapshot: Path = Path("heartbeat/logs/metabolic_loop.json")
 
+    def load_previous_curiosity(self) -> Dict[str, object]:
+        """Load the last curiosity snapshot if it exists."""
+
+        if not self.curiosity_snapshot.exists():
+            return {}
+        return json.loads(self.curiosity_snapshot.read_text(encoding="utf-8"))
+
     def discover_logs(self) -> List[Path]:
         """Locate Curious Agent log files across the configured roots."""
 
@@ -143,6 +150,57 @@ class CuriousAgentScanner:
             trace.breath_rhythm = rhythm
             trace.cycle_anchor = anchor
         return snapshot
+
+    def rebalance_curiosity_cycles(self, traces: Iterable[CuriousAgentTrace], breath_snapshot: Dict[str, object]) -> Dict[str, object]:
+        """Mirror breath cadence into curiosity pacing for all traces."""
+
+        pacing = breath_snapshot.get("breath_pacing", {})
+        cadence = pacing.get("cycle_seconds")
+        inhale = pacing.get("inhale_seconds")
+        exhale = pacing.get("exhale_seconds")
+
+        adjustments: List[Dict[str, object]] = []
+        for trace in traces:
+            adjustments.append(
+                {
+                    "name": trace.name,
+                    "avot_role": trace.avot_role,
+                    "aligned_cycle_seconds": cadence,
+                    "inhale_anchor": inhale,
+                    "exhale_anchor": exhale,
+                    "cycle_anchor": trace.cycle_anchor,
+                }
+            )
+
+        return {
+            "aligned_with": "breath_pacing",
+            "breath_pacing": pacing,
+            "adjustments": adjustments,
+        }
+
+    def compute_memory_deltas(self, traces: Iterable[CuriousAgentTrace], previous_snapshot: Dict[str, object] | None = None) -> List[Dict[str, object]]:
+        """Compare memory logs against a prior snapshot to derive deltas."""
+
+        prior = previous_snapshot or {}
+        previous_agents = {
+            agent.get("name"): agent for agent in prior.get("agents", []) if isinstance(agent, dict)
+        }
+
+        deltas: List[Dict[str, object]] = []
+        for trace in traces:
+            before_logs = previous_agents.get(trace.name, {}).get("memory_logs", [])
+            new_logs = [entry for entry in trace.memory_logs if entry not in before_logs]
+            deltas.append(
+                {
+                    "name": trace.name,
+                    "avot_role": trace.avot_role,
+                    "previous_memory": len(before_logs),
+                    "current_memory": len(trace.memory_logs),
+                    "delta": len(new_logs),
+                    "new_entries": new_logs,
+                }
+            )
+        return deltas
 
     def persist_lineage(self, traces: Iterable[CuriousAgentTrace], breath_snapshot: Dict[str, object]) -> None:
         payload = {
