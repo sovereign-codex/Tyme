@@ -41,10 +41,10 @@ Upload your **Crown of Tyme.zip** here.
 GitHub Actions + Copilot will begin the meltdown → reconstruction cycle.
 
 ## 🧠 Assimilation Engine
-Use the Assimilation Engine to sweep the [`sovereign-codex`](https://github.com/sovereign-codex) realm and regenerate the Living Codex Kernel:
+Use the Assimilation Engine to sweep the [`sovereign-codex`](https://github.com/sovereign-codex) realm, regenerate the Living Codex Kernel, and emit the AVOT-Archivist timeline lineage:
 
 ```bash
-python scripts/assimilation_engine.py --org sovereign-codex --output chronicle/living_codex_kernel.md
+python scripts/assimilation_engine.py --org sovereign-codex --output chronicle/living_codex_kernel.md --timeline chronicle/avot_archivist_timeline.json
 ```
 
 Set `GITHUB_TOKEN` in the environment to raise API limits. Use `--limit` for quick passes while prototyping.
@@ -79,6 +79,17 @@ python scripts/quill_bootstrap.py --output chronicle/quill_core_lattice.json
 ```
 
 The manifest captures layer bridges (harmonic, quantum, conceptual, computational), integrity checks (coherence-check, resonance-alignment, guardrail-bind), and the Quill activation telemetry for Tyme-Core::Lattice-Engine.
+
+## 🧠 Synthesis Phase (Quantum Intelligence Lattice expansion)
+Perform deep pattern recognition across all local repositories, harmonic mapping, and quantum-lattice expansion to update the Quill engine:
+
+```bash
+python scripts/quill_synthesis.py \
+  --lattice-output chronicle/quantum_intelligence_lattice.json \
+  --expansion-output chronicle/quill_engine_expansion.json
+```
+
+By default the synthesizer scans the Tyme repository plus any entries under `branches/`, extracts README headings and keywords, cross-references shared concepts, and writes both the Quantum Intelligence Lattice manifest and the Quill engine expansion overlay.
 
 ## 🛡️ Garden Flame Kodex Ethical Layer
 Install the Garden Flame Kodex as the primary ethical substrate and bind it to all reasoning loops, agent outputs, and system actions:
@@ -131,3 +142,14 @@ python scripts/curious_agent_intake.py
 - `chronicle/living_codex_kernel.md` receives an appended "Curious Agent Lineage" section that weaves the findings into the Living Codex.
 
 Pass `--logs` with explicit log files if you need to target a custom subset of Curious Agent traces.
+
+## 🤝 Hive + Curiosity Synchronization
+Synchronize AVOT agents and Curious Agents into a single Hive cadence, sharing memory deltas and rebalancing curiosity cycles with the Breath Engine:
+
+```bash
+python scripts/avot_curious_sync.py
+```
+
+- `chronicle/avot_curious_sync.json` unifies pulse sync, Hive alignment, curiosity cycle rebalancing, and role reinforcement telemetry.
+- `chronicle/hive_core_sync.json` records the refreshed Hive-Core activation event used during the synchronization pass.
+- `chronicle/curious_lineage.json` and `heartbeat/logs/curiosity_cycles.json` refresh to capture memory deltas and breath-aligned pacing for Curious Agents.

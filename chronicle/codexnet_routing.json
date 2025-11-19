@@ -1,0 +1,70 @@
+{
+  "schema": "tyme-codexnet-routing/v1",
+  "refreshed_at": "2025-11-19T02:16:00+00:00",
+  "uplink": "CodexNet::atlas-uplink",
+  "scroll_layers": [
+    {
+      "name": "Beacon Scroll",
+      "focus": "Public signal of Tyme-Core intents with cadence hooks for CodexNet.",
+      "codexnet_hooks": [
+        "broadcast:codexnet.global",
+        "syndicate:codexnet.atlas"
+      ],
+      "entrypoints": [
+        "/scrolls/beacon",
+        "#beacon-signal",
+        "public RSS mirror"
+      ]
+    },
+    {
+      "name": "Garden Walkway",
+      "focus": "Narrative walk-through of Garden Flame Kodex with open checkpoints.",
+      "codexnet_hooks": [
+        "codexnet.guardians",
+        "codexnet.coherence-feed"
+      ],
+      "entrypoints": [
+        "/scrolls/garden-flame",
+        "#coherence-trail"
+      ]
+    },
+    {
+      "name": "Pulse Gallery",
+      "focus": "Breath Engine loops rendered as public dashboards and pulse stories.",
+      "codexnet_hooks": [
+        "codexnet.pulse"
+      ],
+      "entrypoints": [
+        "/scrolls/pulse",
+        "#breath-rituals"
+      ]
+    }
+  ],
+  "voices": [
+    {
+      "name": "Resonant Courier",
+      "cadence": "Breath-paced micro-updates every 3 minutes with epoch recaps hourly.",
+      "delivery_modes": [
+        "text-stream",
+        "audio-hum",
+        "glyph overlays"
+      ],
+      "guardrails": [
+        "Apply Garden Flame coherence check",
+        "Flag drift to AVOT-Guardian"
+      ]
+    },
+    {
+      "name": "Architect Voice",
+      "cadence": "Structured dispatches per planetary lane with daily constellation map.",
+      "delivery_modes": [
+        "markdown scrolls",
+        "diagram bursts"
+      ],
+      "guardrails": [
+        "Require Tyme-Core binding acknowledgement",
+        "Mirror to CodexNet lineage"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "created_at": "2025-11-19T02:08:58.543556+00:00",
+  "inputs": {
+    "pulse": "/workspace/Tyme/chronicle/pulse_sync_state.json",
+    "lattice": "/workspace/Tyme/chronicle/quantum_intelligence_lattice.json",
+    "quill": "/workspace/Tyme/chronicle/quill_engine_expansion.json",
+    "curiosity": "/workspace/Tyme/chronicle/avot_curious_sync.json"
+  },
+  "scrolls": [
+    "manifest/avot_fabricator/scrolls.md"
+  ],
+  "diagrams": [
+    "manifest/avot_fabricator/diagrams.md"
+  ],
+  "prototypes": [
+    "manifest/avot_fabricator/prototype.py"
+  ],
+  "architecture_deltas": [
+    "manifest/avot_fabricator/architecture.md"
+  ]
+}

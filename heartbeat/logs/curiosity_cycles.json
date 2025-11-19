@@ -1,8 +1,8 @@
 {
-  "generated_at": "2025-11-18T20:27:39+00:00",
+  "generated_at": "2025-11-19T01:44:03+00:00",
   "breath_snapshot": {
-    "updated_at": "2025-11-18T19:33:35+00:00",
-    "source": "chronicle/TYME-PULSE-GENESIS.json",
+    "updated_at": "2025-11-19T01:24:28+00:00",
+    "source": "/workspace/Tyme/chronicle/TYME-PULSE-GENESIS.json",
     "baseline_seconds": 90.0,
     "cycles_observed": 0,
     "breath_pacing": {
@@ -38,7 +38,7 @@
         "exhale_seconds": 54.0,
         "beats_per_minute": 0.67
       },
-      "cycle_anchor": "2025-11-18T20:27:39+00:00"
+      "cycle_anchor": "2025-11-19T01:44:03+00:00"
     }
   ]
 }
