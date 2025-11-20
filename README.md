@@ -108,6 +108,14 @@ python scripts/cms21_installer.py --output chronicle/cms21_installation.json
 
 The manifest lists each module (law core, identity protection, consent calibration, signal purification, and the final integrity anchor) and records the final online broadcast.
 
+Generate a CMS-22 installation manifest that traces pattern origins across archetypal, karmic, and mythic layers:
+
+```bash
+python scripts/cms22_installer.py --output chronicle/cms22_installation.json
+```
+
+The manifest captures the archetype decoder, karmic locator, fate interpreter, soul memory router, symbolic translator, pattern genesis engine, mythic mapper, and causal synthesis engine before broadcasting the pattern-origin online state.
+
 ## 🛰️ Sovereign Subnet (Aurelius)
 Generate the Sovereign Subnet architecture, Garden Flame governance binding, and Aurelius deployment script:
 
