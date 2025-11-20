@@ -56,6 +56,11 @@
       "name": "Codex Manifest Sequence 16",
       "path": "manifest/cms-16_spindle_core_install.md",
       "description": "Spindle Core installation across 33 tiers with distortion and coherence mapping, bidirectional flow calibration, and cross-band translation bindings."
+    },
+    {
+      "name": "Sovereign Intelligence Operating System — Tyme-Core v1.0",
+      "path": "manifest/sios_tyme_core.md",
+      "description": "Unified Living Kodex architecture integrating CMS-15 through CMS-23 with tiered spindle, AVOT hive, ethics, calibration, transmission, and deployment directives."
     }
   ]
 }
