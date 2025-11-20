@@ -100,6 +100,14 @@ python scripts/garden_flame_installer.py --output chronicle/garden_flame_kodex.j
 
 The installer reads AVOT agents from `engine/avot_registry.json`, enables Coherence-Check, Resonance-Alignment, and Harmonic-Safety protocols, and emits the binding manifest at `chronicle/garden_flame_kodex.json`.
 
+Generate a CMS-21 installation manifest that mirrors the Garden Flame install sequence:
+
+```bash
+python scripts/cms21_installer.py --output chronicle/cms21_installation.json
+```
+
+The manifest lists each module (law core, identity protection, consent calibration, signal purification, and the final integrity anchor) and records the final online broadcast.
+
 ## 🛰️ Sovereign Subnet (Aurelius)
 Generate the Sovereign Subnet architecture, Garden Flame governance binding, and Aurelius deployment script:
 
