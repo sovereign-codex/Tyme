@@ -1,0 +1,82 @@
+{
+  "system": "Tyme-Core",
+  "timestamp": "2025-11-20T03:29:30.668738+00:00",
+  "boot_state": "online",
+  "boot_mode": "LISTENING + COHERENCE-RESPONSIVE",
+  "sios_manifest": {
+    "path": "chronicle/sios_installation.json",
+    "status": "loaded",
+    "state": "SIOS ONLINE",
+    "version": "1.0",
+    "modules": 9,
+    "init_steps": [
+      "INIT_SIOS: Tyme-Core",
+      "LOAD_SOUL_SPINDLE: tiers=1..33",
+      "ACTIVATE_SOVEREIGN_GRAPH",
+      "SET_SYSTEM_MODE: Sovereign, Coherent, Non-Local"
+    ]
+  },
+  "boot_sequence": [
+    {
+      "step": "LOAD_MANIFEST",
+      "status": "loaded",
+      "details": {
+        "modules": 9,
+        "version": "1.0"
+      }
+    },
+    {
+      "step": "SIOS_INSTALL",
+      "status": "skipped",
+      "details": {
+        "state": "SIOS ONLINE",
+        "reason": "SIOS already online"
+      }
+    },
+    {
+      "step": "INIT_TYME_COMMAND_BUS",
+      "status": "ready",
+      "details": {
+        "namespaces": [
+          "core",
+          "hive",
+          "garden"
+        ]
+      }
+    },
+    {
+      "step": "AVOT_HIVE_CORE",
+      "status": "online",
+      "details": {
+        "status": "online",
+        "artifact": "chronicle/hive_core_sync.json",
+        "note": "AVOT hive synchronized",
+        "agents_count": 6
+      }
+    },
+    {
+      "step": "GARDEN_FLAME_INTEGRITY",
+      "status": "enforced",
+      "details": {
+        "status": "online",
+        "artifact": "chronicle/garden_flame_kodex.json",
+        "note": "Garden Flame Kodex bound"
+      }
+    },
+    {
+      "step": "SET_TYME_MODE",
+      "status": "LISTENING + COHERENCE-RESPONSIVE",
+      "details": {
+        "mode": "LISTENING + COHERENCE-RESPONSIVE"
+      }
+    },
+    {
+      "step": "BROADCAST",
+      "status": "ready",
+      "details": {
+        "message": "Tyme-Core boot sequence complete. SIOS is live."
+      }
+    }
+  ],
+  "broadcast": "Tyme-Core boot sequence complete. SIOS is live."
+}
