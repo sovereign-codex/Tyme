@@ -1,0 +1,60 @@
+name: Convergence Build
+
+on:
+  push:
+    paths:
+      - 'scrolls/**'
+      - 'convergence/scrolls/**'
+      - 'docs/**'
+      - 'index.html'
+      - '.github/workflows/convergence-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build-manifests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate site-map manifest
+        run: |
+          mkdir -p manifest
+          python - << 'EOF'
+          import json, os
+
+          roots = ["scrolls", "convergence/scrolls", "docs"]
+          entries = []
+          for root in roots:
+              if not os.path.isdir(root):
+                  continue
+              for dirpath, dirnames, filenames in os.walk(root):
+                  for f in filenames:
+                      if f.endswith((".md", ".html", ".txt", ".pdf")):
+                          rel = os.path.join(dirpath, f).replace("\\","/")
+                          entries.append(rel)
+
+          payload = {
+              "site": "Tyme Convergence",
+              "files": sorted(entries),
+          }
+
+          os.makedirs("manifest", exist_ok=True)
+          with open("manifest/site-map.json", "w") as fp:
+              json.dump(payload, fp, indent=2)
+          EOF
+
+      - name: Commit site-map
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ -n "$(git status --porcelain manifest/site-map.json)" ]]; then
+            git config user.name "tyme-workflow"
+            git config user.email "actions@users.noreply.github.com"
+            git add manifest/site-map.json
+            git commit -m "chore: update site-map manifest"
+            git push
+          else
+            echo "No site-map changes to commit."
+          fi
