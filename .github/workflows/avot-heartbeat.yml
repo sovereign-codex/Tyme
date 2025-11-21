@@ -1,0 +1,46 @@
+name: AVOT Heartbeat
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update AVOT heartbeat file
+        run: |
+          mkdir -p heartbeat
+          python - << 'EOF'
+          import json, os
+          from datetime import datetime, timezone
+
+          path = "heartbeat/avot-heartbeat.json"
+          now = datetime.now(timezone.utc).isoformat()
+          payload = {
+              "last_beat": now,
+              "note": "Automated heartbeat from GitHub Actions AVOT grid."
+          }
+          os.makedirs(os.path.dirname(path), exist_ok=True)
+          with open(path, "w") as f:
+              json.dump(payload, f, indent=2)
+          EOF
+
+      - name: Commit heartbeat
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ -n "$(git status --porcelain heartbeat/avot-heartbeat.json)" ]]; then
+            git config user.name "tyme-workflow"
+            git config user.email "actions@users.noreply.github.com"
+            git add heartbeat/avot-heartbeat.json
+            git commit -m "chore: update AVOT heartbeat"
+            git push
+          else
+            echo "No heartbeat changes to commit."
+          fi

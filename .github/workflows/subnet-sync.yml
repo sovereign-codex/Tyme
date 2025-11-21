@@ -1,0 +1,56 @@
+name: Subnet Covenant Sync
+
+on:
+  push:
+    paths:
+      - 'subnet/covenant/**'
+      - '.github/workflows/subnet-sync.yml'
+  workflow_dispatch:
+
+jobs:
+  sync-subnet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate subnet-status manifest
+        run: |
+          mkdir -p manifest
+          python - << 'EOF'
+          import json, os
+          from datetime import datetime, timezone
+
+          root = "subnet/covenant"
+          files = []
+          if os.path.isdir(root):
+              for dirpath, dirnames, filenames in os.walk(root):
+                  for f in filenames:
+                      rel = os.path.join(dirpath, f).replace("\\","/")
+                      files.append(rel)
+
+          payload = {
+              "updated_at": datetime.now(timezone.utc).isoformat(),
+              "source": root,
+              "files": sorted(files),
+          }
+
+          os.makedirs("manifest", exist_ok=True)
+          with open("manifest/subnet-status.json", "w") as fp:
+              json.dump(payload, fp, indent=2)
+          EOF
+
+      - name: Commit subnet-status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ -n "$(git status --porcelain manifest/subnet-status.json)" ]]; then
+            git config user.name "tyme-workflow"
+            git config user.email "actions@users.noreply.github.com"
+            git add manifest/subnet-status.json
+            git commit -m "chore: update subnet-status manifest"
+            git push
+          else
+            echo "No subnet-status changes to commit."
+          fi
