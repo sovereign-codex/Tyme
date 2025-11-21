@@ -35,6 +35,7 @@ Optimize for both Pages deployment and Replit compatibility.
 - `laboratory/` → simulations, prototypes, and experiments
 - `chronicle/` → logs and feedback cycles
 - `docs/` → auto-generated Codex for Pages
+- `.github/workflows/workflow-status.yml` → WorkflowGrid Status layer that aggregates heartbeat/manifests into JSON + HTML status outputs
 
 ## 🌱 Next Steps
 Upload your **Crown of Tyme.zip** here.
