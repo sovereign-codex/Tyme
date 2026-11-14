@@ -1,0 +1,123 @@
+{
+  "schema": "org.tyme.eco.site-record",
+  "schema_version": "0.1.0",
+  "record_id": "SI-ECO-SYN-001",
+  "classification": "synthetic",
+  "authority": {
+    "mode": "read-only-experiment",
+    "field_action_enabled": false,
+    "dispatch_enabled": false,
+    "credentials_loaded": false,
+    "institutional_effect": "none"
+  },
+  "site": {
+    "site_id": "SITE-SYN-001",
+    "label": "Synthetic Sonoran field site",
+    "site_kind": "hypothetical_landscape",
+    "coordinate_frame": {
+      "kind": "local-cartesian-meters",
+      "georeferenced": false,
+      "width_m": 20,
+      "height_m": 15,
+      "origin_description": "Arbitrary synthetic southwest corner; not a geodetic point"
+    }
+  },
+  "features": [
+    {
+      "feature_id": "tree-001",
+      "label": "Existing canopy tree (synthetic)",
+      "kind": "tree",
+      "position_m": [4.5, 10.5],
+      "taxon_candidate": "Prosopis velutina",
+      "identification_status": "unverified"
+    },
+    {
+      "feature_id": "plot-001",
+      "label": "Soil monitoring plot (synthetic)",
+      "kind": "soil_plot",
+      "position_m": [12, 6],
+      "taxon_candidate": null,
+      "identification_status": "not_applicable"
+    },
+    {
+      "feature_id": "runoff-001",
+      "label": "Runoff observation point (synthetic)",
+      "kind": "drainage",
+      "position_m": [17.5, 2.5],
+      "taxon_candidate": null,
+      "identification_status": "not_applicable"
+    }
+  ],
+  "visits": [
+    {
+      "visit_id": "visit-baseline",
+      "timestamp": "2026-05-01T12:00:00Z",
+      "role": "synthetic_baseline"
+    },
+    {
+      "visit_id": "visit-followup",
+      "timestamp": "2026-05-15T12:00:00Z",
+      "role": "synthetic_counterfactual_followup"
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "obs-baseline",
+      "feature_id": "plot-001",
+      "visit_id": "visit-baseline",
+      "metric": "soil_moisture_volumetric_pct",
+      "value": 11,
+      "unit": "percent",
+      "uncertainty_abs": 2,
+      "sampling_role": "baseline",
+      "provenance": {
+        "source_kind": "synthetic",
+        "method": "fabricated_training_fixture",
+        "source_id": "fixture:SI-ECO-SYN-001"
+      },
+      "review_status": "unreviewed"
+    },
+    {
+      "observation_id": "obs-followup",
+      "feature_id": "plot-001",
+      "visit_id": "visit-followup",
+      "metric": "soil_moisture_volumetric_pct",
+      "value": 14,
+      "unit": "percent",
+      "uncertainty_abs": 2,
+      "sampling_role": "counterfactual_followup",
+      "provenance": {
+        "source_kind": "synthetic",
+        "method": "fabricated_training_fixture",
+        "source_id": "fixture:SI-ECO-SYN-001"
+      },
+      "review_status": "unreviewed"
+    }
+  ],
+  "interventions": [
+    {
+      "intervention_id": "intervention-001",
+      "feature_id": "plot-001",
+      "label": "Infiltration-basin concept",
+      "status": "simulated_only",
+      "description": "Hypothetical contour and mulch intervention; not a construction or ecological recommendation.",
+      "authorization": {
+        "approved": false,
+        "actor": null
+      },
+      "prediction": {
+        "metric": "soil_moisture_volumetric_pct",
+        "baseline_observation_id": "obs-baseline",
+        "followup_observation_id": "obs-followup",
+        "minimum_delta_points": 4
+      },
+      "outcome_classification": "synthetic_counterfactual_only"
+    }
+  ],
+  "limitations": [
+    "Every site coordinate and observation is fabricated; no land has been surveyed.",
+    "The follow-up is a counterfactual fixture, not a post-installation measurement.",
+    "No botanical identification, hydrological model, or ecological efficacy is verified.",
+    "No field actions or autonomous decisions are authorized."
+  ]
+}
