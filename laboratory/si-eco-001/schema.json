@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tymehall.org/schemas/experimental/si-eco-site-record-0.1.0.json",
+  "title": "SI-ECO-001 experimental environmental site record",
+  "description": "Experimental, non-authorizing, bounded local-coordinate fixture; this $id is an identifier, not a claim that the URL is live.",
+  "type": "object",
+  "required": ["schema", "schema_version", "record_id", "classification", "authority", "site", "features", "visits", "observations", "interventions", "limitations"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "org.tyme.eco.site-record"},
+    "schema_version": {"const": "0.1.0"},
+    "record_id": {"type": "string", "minLength": 1},
+    "classification": {"const": "synthetic"},
+    "authority": {
+      "type": "object", "required": ["mode", "field_action_enabled", "dispatch_enabled", "credentials_loaded", "institutional_effect"], "additionalProperties": false,
+      "properties": {
+        "mode": {"const": "read-only-experiment"},
+        "field_action_enabled": {"const": false},
+        "dispatch_enabled": {"const": false},
+        "credentials_loaded": {"const": false},
+        "institutional_effect": {"const": "none"}
+      }
+    },
+    "site": {
+      "type": "object", "required": ["site_id", "label", "site_kind", "coordinate_frame"], "additionalProperties": false,
+      "properties": {
+        "site_id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "site_kind": {"const": "hypothetical_landscape"},
+        "coordinate_frame": {
+          "type": "object", "required": ["kind", "georeferenced", "width_m", "height_m", "origin_description"], "additionalProperties": false,
+          "properties": {
+            "kind": {"const": "local-cartesian-meters"},
+            "georeferenced": {"const": false},
+            "width_m": {"type": "number", "exclusiveMinimum": 0},
+            "height_m": {"type": "number", "exclusiveMinimum": 0},
+            "origin_description": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "features": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/feature"}},
+    "visits": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/visit"}},
+    "observations": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/observation"}},
+    "interventions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/intervention"}},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "feature": {
+      "type": "object", "required": ["feature_id", "label", "kind", "position_m", "taxon_candidate", "identification_status"], "additionalProperties": false,
+      "properties": {
+        "feature_id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["tree", "plant", "soil_plot", "drainage", "irrigation", "structure"]},
+        "position_m": {"type": "array", "prefixItems": [{"type": "number"}, {"type": "number"}], "items": false, "minItems": 2},
+        "taxon_candidate": {"type": ["string", "null"]},
+        "identification_status": {"enum": ["unverified", "not_applicable"]}
+      }
+    },
+    "visit": {
+      "type": "object", "required": ["visit_id", "timestamp", "role"], "additionalProperties": false,
+      "properties": {
+        "visit_id": {"type": "string", "minLength": 1},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "role": {"enum": ["synthetic_baseline", "synthetic_counterfactual_followup"]}
+      }
+    },
+    "observation": {
+      "type": "object", "required": ["observation_id", "feature_id", "visit_id", "metric", "value", "unit", "uncertainty_abs", "sampling_role", "provenance", "review_status"], "additionalProperties": false,
+      "properties": {
+        "observation_id": {"type": "string", "minLength": 1},
+        "feature_id": {"type": "string", "minLength": 1},
+        "visit_id": {"type": "string", "minLength": 1},
+        "metric": {"const": "soil_moisture_volumetric_pct"},
+        "value": {"type": "number", "minimum": 0, "maximum": 100},
+        "unit": {"const": "percent"},
+        "uncertainty_abs": {"type": "number", "minimum": 0, "maximum": 100},
+        "sampling_role": {"enum": ["baseline", "counterfactual_followup"]},
+        "review_status": {"const": "unreviewed"},
+        "provenance": {
+          "type": "object", "required": ["source_kind", "method", "source_id"], "additionalProperties": false,
+          "properties": {
+            "source_kind": {"const": "synthetic"},
+            "method": {"const": "fabricated_training_fixture"},
+            "source_id": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "intervention": {
+      "type": "object", "required": ["intervention_id", "feature_id", "label", "status", "description", "authorization", "prediction", "outcome_classification"], "additionalProperties": false,
+      "properties": {
+        "intervention_id": {"type": "string", "minLength": 1},
+        "feature_id": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "status": {"const": "simulated_only"},
+        "description": {"type": "string", "minLength": 1},
+        "authorization": {
+          "type": "object", "required": ["approved", "actor"], "additionalProperties": false,
+          "properties": {"approved": {"const": false}, "actor": {"type": "null"}}
+        },
+        "prediction": {
+          "type": "object", "required": ["metric", "baseline_observation_id", "followup_observation_id", "minimum_delta_points"], "additionalProperties": false,
+          "properties": {
+            "metric": {"const": "soil_moisture_volumetric_pct"},
+            "baseline_observation_id": {"type": "string", "minLength": 1},
+            "followup_observation_id": {"type": "string", "minLength": 1},
+            "minimum_delta_points": {"type": "number", "minimum": 0, "maximum": 100}
+          }
+        },
+        "outcome_classification": {"const": "synthetic_counterfactual_only"}
+      }
+    }
+  }
+}

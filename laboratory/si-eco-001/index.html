@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>SI-ECO-001 | Environmental Site Memory</title>
+  <style>
+    :root{--bg:#0b1412;--surface:#12201b;--surface2:#1a2c24;--ink:#eaf2ec;--muted:#a0b9aa;--green:#92d6a8;--gold:#e6bb74;--line:#30463a;--red:#f0a59b}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 8% 0,#1e362a 0,transparent 46%),var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    a{color:var(--green)} .wrap{max-width:1150px;margin:0 auto;padding:24px clamp(16px,4vw,40px) 60px} .mast{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--green)}.mark{display:grid;place-items:center;width:38px;height:38px;border:1px solid #578e70;border-radius:50%;font-size:13px}
+    .pill{display:inline-block;border:1px solid #916e44;color:#ffda9e;background:#35281755;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.05em}
+    h1{font-size:clamp(30px,5vw,52px);line-height:1.12;letter-spacing:-.04em;margin:24px 0 12px;max-width:760px}h2{font-size:20px;letter-spacing:-.02em;margin:0 0 10px}p{margin:0 0 14px;color:var(--muted)}
+    .lead{font-size:17px;max-width:740px;line-height:1.65}.eyebrow{color:var(--green);font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 24px}
+    .btn{background:#254733;color:var(--ink);border:1px solid #4b7459;border-radius:11px;padding:10px 14px;min-height:44px;font-weight:650} .btn.secondary{background:transparent;border-color:var(--line)} .btn:hover{border-color:var(--green)}
+    .grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(285px,.85fr);gap:16px} .panel{background:linear-gradient(150deg,#17261f,#101e18);border:1px solid var(--line);border-radius:18px;padding:20px;min-width:0} .panel + .panel{margin:0}
+    .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}.metric{border:1px solid var(--line);background:#18291f;border-radius:13px;padding:14px}.metric .value{font-size:26px;font-weight:780;line-height:1.2;letter-spacing:-.035em}.metric .key{font-size:11px;text-transform:uppercase;color:var(--muted);letter-spacing:.09em;margin-top:6px}
+    .map-wrap{margin-top:12px;border:1px solid #355540;border-radius:14px;overflow:hidden;background:#0c1813}.map-wrap svg{display:block;width:100%;height:auto;min-height:210px;max-height:470px} .map-foot{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .rows{display:grid;gap:9px;margin-top:14px}.item{display:flex;width:100%;align-items:flex-start;gap:10px;text-align:left;padding:12px;background:#182b21;border:1px solid #31503c;border-radius:12px;color:var(--ink)}.item:hover,.item.active{background:#254130;border-color:#7bb78c} .dot{margin-top:5px;width:10px;height:10px;border-radius:100%;flex:none;background:var(--green)}.dot.tree{background:#d1d78d}.dot.drainage{background:#7cc4d5}.item small{display:block;color:var(--muted)}
+    .subtle{font-size:13px;color:var(--muted)}.strong{color:var(--ink);font-weight:650}.note{border-left:3px solid var(--gold);background:#2c271a;padding:12px 14px;border-radius:0 10px 10px 0;color:#f2dbb2;font-size:13px;line-height:1.55}.status{font-weight:700;color:var(--gold)} .statline{display:flex;justify-content:space-between;gap:16px;margin:10px 0;padding-bottom:10px;border-bottom:1px solid var(--line)}
+    .cycle{display:grid;gap:9px}.step{border:1px solid #31473a;border-radius:11px;padding:12px 14px;background:#1a2c23}.step b{display:block}.step small{color:var(--muted)}
+    .foot{border-top:1px solid var(--line);margin-top:26px;padding-top:18px;font-size:12px;color:var(--muted)} .sourcelist{font-size:12px;word-break:break-word;color:var(--muted)}.error{padding:12px 14px;background:#4e211d;color:#ffe2dd;border:1px solid #b85e52;border-radius:10px;margin:10px 0} .hidden{display:none}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.metric-row{grid-template-columns:repeat(3,1fr)}.metric{padding:12px 9px}.metric .value{font-size:22px}.panel{padding:16px}.wrap{padding-top:15px}}
+    @media(max-width:370px){.metric-row{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:span 2}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast"><div class="brand"><span class="mark">SI</span><span>Sovereign Intelligence / Ecology</span></div><span class="pill">SYNTHETIC - NO FIELD AUTHORITY</span></header>
+  <h1>Memory of a living place.</h1>
+  <p class="lead">SI-ECO-001 explores how intelligence can preserve site identity, observations, uncertainty, and the consequences of a proposed intervention. This is an offline, read-only demonstration; no real ecological outcome is established.</p>
+  <div class="actions">
+    <button id="exportBtn" class="btn" type="button">Export active record (.json)</button>
+    <button id="importBtn" class="btn secondary" type="button">Inspect another synthetic record</button>
+    <input id="fileInput" type="file" accept=".json,application/json" class="hidden" aria-label="Import synthetic record">
+    <button id="resetBtn" class="btn secondary" type="button">Restore demo</button>
+  </div>
+  <div id="error" role="alert" class="hidden"></div>
+  <div class="metric-row">
+    <div class="metric"><div id="featureCount" class="value">3</div><div class="key">Tracked features</div></div>
+    <div class="metric"><div id="obsCount" class="value">2</div><div class="key">Synthetic observations</div></div>
+    <div class="metric"><div id="siteDimensions" class="value">20 x 15</div><div class="key">Local meters</div></div>
+  </div>
+  <div class="grid">
+    <section class="panel" aria-labelledby="mapTitle">
+      <div class="eyebrow">Site memory / spatial objects</div>
+      <h2 id="mapTitle">Synthetic Sonoran field site</h2>
+      <p>Each feature retains a stable identity across site observations. The local map is not georeferenced, surveyed, or suitable for construction.</p>
+      <div class="map-wrap"><svg id="map" viewBox="0 0 700 460" role="img" aria-label="Schematic local site map showing three synthetic features"></svg></div>
+      <div class="map-foot"><span id="frameLabel">Origin: arbitrary local coordinates</span><span>North is not established</span></div>
+      <div id="features" class="rows"></div>
+    </section>
+    <section class="panel" aria-labelledby="cycleTitle">
+      <div class="eyebrow">Observation -> simulation -> comparison</div>
+      <h2 id="cycleTitle">One bounded causal question</h2>
+      <p id="interventionDesc"></p>
+      <div class="cycle">
+        <div class="step"><small>01 / Synthetic baseline</small><b id="baseline">11% +/- 2 points</b></div>
+        <div class="step"><small>02 / Proposed intervention, not executed</small><b id="target">Target: +4 points</b></div>
+        <div class="step"><small>03 / Synthetic counterfactual follow-up</small><b id="followup">14% +/- 2 points</b></div>
+        <div class="step"><small>04 / Conservative evidence review</small><b id="comparison">Difference: +3 points</b></div>
+      </div>
+      <div class="note" style="margin-top:14px"><span class="status">No ecological efficacy established.</span> <span id="outcome">The constructed comparison does not meet its central target and cannot support a real-world effect.</span></div>
+      <div class="statline"><span class="subtle">Record classification</span><span id="classification" class="strong">synthetic</span></div>
+      <div class="statline"><span class="subtle">Authority</span><span class="strong">read-only / none</span></div>
+      <div class="statline"><span class="subtle">Review status</span><span class="strong">unreviewed</span></div>
+    </section>
+  </div>
+  <section class="panel" style="margin-top:16px">
+    <div class="eyebrow">Evidence boundary</div>
+    <h2>What this experiment can and cannot claim</h2>
+    <div class="grid">
+      <div><p class="strong">Demonstrated as a software fixture</p><p>Stable site and feature identifiers; local coordinates; provenance labels; time-ordered synthetic readings; an explicit simulated intervention; a reproducible comparison that retains uncertainty.</p></div>
+      <div><p class="strong">Not established in the physical world</p><p>Accurate land mapping, species identification, hydrological response, ecological restoration, measured effect, independent verification, or any authorized field action.</p></div>
+    </div>
+    <div class="sourcelist" id="limitations"></div>
+  </section>
+  <footer class="foot"><strong>SI-ECO-001 / 0.1.0</strong> | No remote scripts, analytics, credentials, uploads, or network requests. Imported records remain in browser memory only and can be exported explicitly. Closing the page discards unexported changes. "A day the world has never seen" is a research direction, not an evidence claim.</footer>
+</div>
+<script id="synthetic-record" type="application/json">{"schema":"org.tyme.eco.site-record","schema_version":"0.1.0","record_id":"SI-ECO-SYN-001","classification":"synthetic","authority":{"mode":"read-only-experiment","field_action_enabled":false,"dispatch_enabled":false,"credentials_loaded":false,"institutional_effect":"none"},"site":{"site_id":"SITE-SYN-001","label":"Synthetic Sonoran field site","site_kind":"hypothetical_landscape","coordinate_frame":{"kind":"local-cartesian-meters","georeferenced":false,"width_m":20,"height_m":15,"origin_description":"Arbitrary synthetic southwest corner; not a geodetic point"}},"features":[{"feature_id":"tree-001","label":"Existing canopy tree (synthetic)","kind":"tree","position_m":[4.5,10.5],"taxon_candidate":"Prosopis velutina","identification_status":"unverified"},{"feature_id":"plot-001","label":"Soil monitoring plot (synthetic)","kind":"soil_plot","position_m":[12,6],"taxon_candidate":null,"identification_status":"not_applicable"},{"feature_id":"runoff-001","label":"Runoff observation point (synthetic)","kind":"drainage","position_m":[17.5,2.5],"taxon_candidate":null,"identification_status":"not_applicable"}],"visits":[{"visit_id":"visit-baseline","timestamp":"2026-05-01T12:00:00Z","role":"synthetic_baseline"},{"visit_id":"visit-followup","timestamp":"2026-05-15T12:00:00Z","role":"synthetic_counterfactual_followup"}],"observations":[{"observation_id":"obs-baseline","feature_id":"plot-001","visit_id":"visit-baseline","metric":"soil_moisture_volumetric_pct","value":11,"unit":"percent","uncertainty_abs":2,"sampling_role":"baseline","provenance":{"source_kind":"synthetic","method":"fabricated_training_fixture","source_id":"fixture:SI-ECO-SYN-001"},"review_status":"unreviewed"},{"observation_id":"obs-followup","feature_id":"plot-001","visit_id":"visit-followup","metric":"soil_moisture_volumetric_pct","value":14,"unit":"percent","uncertainty_abs":2,"sampling_role":"counterfactual_followup","provenance":{"source_kind":"synthetic","method":"fabricated_training_fixture","source_id":"fixture:SI-ECO-SYN-001"},"review_status":"unreviewed"}],"interventions":[{"intervention_id":"intervention-001","feature_id":"plot-001","label":"Infiltration-basin concept","status":"simulated_only","description":"Hypothetical contour and mulch intervention; not a construction or ecological recommendation.","authorization":{"approved":false,"actor":null},"prediction":{"metric":"soil_moisture_volumetric_pct","baseline_observation_id":"obs-baseline","followup_observation_id":"obs-followup","minimum_delta_points":4},"outcome_classification":"synthetic_counterfactual_only"}],"limitations":["Every site coordinate and observation is fabricated; no land has been surveyed.","The follow-up is a counterfactual fixture, not a post-installation measurement.","No botanical identification, hydrological model, or ecological efficacy is verified.","No field actions or autonomous decisions are authorized."]}</script>
+<script>
+(function(){
+  'use strict';
+  const original = JSON.parse(document.getElementById('synthetic-record').textContent);
+  let data = typeof structuredClone === "function" ? structuredClone(original) : JSON.parse(JSON.stringify(original));
+  let active = '';
+  const $ = id => document.getElementById(id);
+  function clean(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function error(t){$('error').className='error';$('error').textContent=t;}
+  function clearError(){$('error').className='hidden';$('error').textContent='';}
+  function contract(r){
+    if(!r||r.schema!=='org.tyme.eco.site-record'||r.schema_version!=='0.1.0'||r.classification!=='synthetic')return 'Only SI-ECO-001 v0.1 synthetic records may be inspected.';
+    if(!r.authority||r.authority.mode!=='read-only-experiment'||r.authority.field_action_enabled!==false||r.authority.dispatch_enabled!==false||r.authority.credentials_loaded!==false||r.authority.institutional_effect!=='none')return 'Non-authorizing authority contract failed.';
+    const f=r.site&&r.site.coordinate_frame;
+    if(!f||f.kind!=='local-cartesian-meters'||f.georeferenced!==false||!(f.width_m>0)||!(f.height_m>0))return 'Site local coordinate frame invalid.';
+    if(!Array.isArray(r.features)||!r.features.length||!Array.isArray(r.visits)||!Array.isArray(r.observations)||!Array.isArray(r.interventions)||!r.interventions.length)return 'Required collections are missing.';
+    const fids=new Set();
+    for(const x of r.features){if(!x.feature_id||fids.has(x.feature_id)||!Array.isArray(x.position_m)||x.position_m.length!==2||x.position_m.some((n,i)=>!Number.isFinite(n)||n<0||n>(i?f.height_m:f.width_m)))return 'Feature identifiers or coordinates invalid.';fids.add(x.feature_id);}
+    const oids=new Set(),obs=new Map();
+    for(const o of r.observations){if(!o.observation_id||oids.has(o.observation_id)||!fids.has(o.feature_id)||o.provenance?.source_kind!=='synthetic'||o.provenance?.method!=='fabricated_training_fixture'||!o.provenance?.source_id||o.review_status!=='unreviewed'||o.metric!=='soil_moisture_volumetric_pct'||o.unit!=='percent'||!Number.isFinite(o.value)||o.value<0||o.value>100||!Number.isFinite(o.uncertainty_abs)||o.uncertainty_abs<0)return 'Observation identity, provenance or numeric values invalid.';oids.add(o.observation_id);obs.set(o.observation_id,o);}
+    for(const x of r.interventions){const p=x.prediction||{},a=obs.get(p.baseline_observation_id),b=obs.get(p.followup_observation_id);if(x.status!=='simulated_only'||x.outcome_classification!=='synthetic_counterfactual_only'||x.authorization?.approved!==false||x.authorization?.actor!==null||!fids.has(x.feature_id)||!a||!b||a===b||a.feature_id!==x.feature_id||b.feature_id!==x.feature_id||a.sampling_role!=='baseline'||b.sampling_role!=='counterfactual_followup'||!Number.isFinite(p.minimum_delta_points))return 'Simulated intervention or evidence links invalid.';}
+    return null;
+  }
+  function addSvg(svg,name,attrs,txt){const n=document.createElementNS('http://www.w3.org/2000/svg',name);for(const k in attrs)n.setAttribute(k,attrs[k]);if(txt!==undefined)n.textContent=txt;svg.appendChild(n);return n;}
+  function renderMap(){
+    const svg=$('map');svg.replaceChildren();const frame=data.site.coordinate_frame;
+    const sx=600/frame.width_m,sy=360/frame.height_m;
+    addSvg(svg,'rect',{x:0,y:0,width:700,height:460,fill:'#102219'});
+    for(let i=0;i<=10;i++){addSvg(svg,'line',{x1:50+i*60,y1:50,x2:50+i*60,y2:410,stroke:'#2d4838','stroke-width':1});}
+    for(let i=0;i<=6;i++){addSvg(svg,'line',{x1:50,y1:50+i*60,x2:650,y2:50+i*60,stroke:'#2d4838','stroke-width':1});}
+    addSvg(svg,'rect',{x:50,y:50,width:600,height:360,fill:'none',stroke:'#7ca88c','stroke-width':2});
+    addSvg(svg,'text',{x:50,y:32,fill:'#aec4b4','font-size':16},'Local site schematic - not surveyed');
+    addSvg(svg,'text',{x:50,y:441,fill:'#9cb5a4','font-size':13},'0 m');
+    addSvg(svg,'text',{x:650,y:441,fill:'#9cb5a4','font-size':13,'text-anchor':'end'},frame.width_m+' m');
+    for(const f of data.features){
+      const x=50+f.position_m[0]*sx,y=410-f.position_m[1]*sy;
+      const color=f.kind==='tree'?'#c7d88c':f.kind==='drainage'?'#7ec3d6':'#94d8ab';
+      const c=addSvg(svg,'circle',{cx:x,cy:y,r:f.feature_id===active?18:13,fill:color,stroke:'#102219','stroke-width':3,tabindex:0,role:'button','aria-label':f.label||f.feature_id});
+      addSvg(svg,'text',{x:x,y:y-22,fill:'#eaf1e8','font-size':15,'text-anchor':'middle'},f.label?.replace(' (synthetic)','')||f.feature_id);
+      c.style.cursor='pointer';c.addEventListener('click',()=>select(f.feature_id));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(f.feature_id);}});
+    }
+  }
+  function select(fid){active=fid;renderMap();renderFeatures();}
+  function renderFeatures(){
+    const el=$('features');el.replaceChildren();
+    for(const f of data.features){
+      const button=document.createElement('button');button.type='button';button.className='item'+(f.feature_id===active?' active':'');
+      const dot=document.createElement('span');dot.className='dot '+f.kind;
+      const content=document.createElement('span');content.innerHTML='<strong>'+clean(f.label)+'</strong><small>'+clean(f.feature_id)+' | '+clean(f.kind)+' | ('+f.position_m.join(', ')+') meters'+(f.taxon_candidate?' | Taxon candidate: '+clean(f.taxon_candidate)+' (unverified)':'')+'</small>';
+      button.append(dot,content);button.addEventListener('click',()=>select(f.feature_id));el.appendChild(button);
+    }
+  }
+  function render(){
+    $('mapTitle').textContent=data.site.label;
+    $('featureCount').textContent=data.features.length;$('obsCount').textContent=data.observations.length;
+    const frame=data.site.coordinate_frame;
+    $('siteDimensions').textContent=frame.width_m+' x '+frame.height_m;
+    $('frameLabel').textContent='Origin: '+frame.origin_description;
+    $('classification').textContent=data.classification;
+    const i=data.interventions[0],p=i.prediction;
+    const a=data.observations.find(o=>o.observation_id===p.baseline_observation_id),b=data.observations.find(o=>o.observation_id===p.followup_observation_id);
+    $('interventionDesc').textContent=i.label+'. '+i.description;
+    $('baseline').textContent=a.value+'% +/- '+a.uncertainty_abs+' points';
+    $('followup').textContent=b.value+'% +/- '+b.uncertainty_abs+' points';
+    $('target').textContent='Target: +'+p.minimum_delta_points+' percentage points';
+    const delta=+(b.value-a.value).toFixed(3),lower=+((b.value-b.uncertainty_abs)-(a.value+a.uncertainty_abs)).toFixed(3);
+    $('comparison').textContent='Central difference: '+(delta>=0?'+':'')+delta+' points';
+    $('outcome').textContent='Central target '+(delta>=p.minimum_delta_points?'met':'not met')+' in fabricated data; conservative lower difference '+lower+' points. These figures cannot establish a real ecological effect.';
+    $('limitations').textContent='Limitations: '+data.limitations.join(' | ');
+    if(!data.features.some(f=>f.feature_id===active))active=data.features[0].feature_id;
+    renderMap();renderFeatures();
+  }
+  $('importBtn').addEventListener('click',()=>$('fileInput').click());
+  $('fileInput').addEventListener('change',async e=>{
+    const file=e.target.files&&e.target.files[0];if(!file)return;
+    try{if(file.size>1000000)throw new Error('Record exceeds 1 MB safety limit.');
+      const parsed=JSON.parse(await file.text());const reason=contract(parsed);if(reason)throw new Error(reason+' Run the Python validator for a complete audit.');
+      data=parsed;active='';clearError();render();
+    }catch(err){error('Import rejected: '+err.message);}finally{e.target.value='';}
+  });
+  $('resetBtn').addEventListener('click',()=>{data=JSON.parse(JSON.stringify(original));active='';clearError();render();});
+  $('exportBtn').addEventListener('click',()=>{
+    const blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'});const url=URL.createObjectURL(blob);
+    const link=document.createElement('a');link.href=url;link.download='SI-ECO-001-'+data.record_id+'.json';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+  const reason=contract(data);if(reason)error('Embedded fixture failed validation: '+reason);else render();
+})();
+</script>
+</body>
+</html>
